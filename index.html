@@ -1,0 +1,1310 @@
+<!doctype html>
+<html lang="ko" data-theme="dark" data-lang="kr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>은책임 — Total Design & Planning Portfolio</title>
+
+<link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+
+<style>
+  :root{
+    --bg: #0e0e10;
+    --bg-elev: #17171a;
+    --bg-elev-2: #1e1e22;
+    --line: #26262b;
+    --line-strong: #35353c;
+    --fg: #f2f2f3;
+    --fg-mute: #a1a1a8;
+    --fg-dim: #6d6d76;
+    --btn-fg: #e9e9ec;
+    --btn-bg: #1a1a1e;
+    --btn-bg-hover: #24242a;
+    --btn-active-bg: #f2f2f3;
+    --btn-active-fg: #0e0e10;
+    --overlay: rgba(10,10,12,.72);
+    --skel-a: #1c1c20;
+    --skel-b: #24242a;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --gutter: 14px;
+    --header-h: 68px;
+    --subhead-h: 72px;
+    --content-max: 1520px;
+    --side-pad: 40px;
+  }
+  html[data-theme="light"]{
+    --bg: #ffffff;
+    --bg-elev: #f6f6f7;
+    --bg-elev-2: #ececee;
+    --line: #e6e6e8;
+    --line-strong: #d5d5d8;
+    --fg: #0e0e10;
+    --fg-mute: #5b5b62;
+    --fg-dim: #8f8f97;
+    --btn-fg: #17171a;
+    --btn-bg: #f2f2f3;
+    --btn-bg-hover: #e6e6e8;
+    --btn-active-bg: #0e0e10;
+    --btn-active-fg: #ffffff;
+    --overlay: rgba(255,255,255,.78);
+    --skel-a: #ececee;
+    --skel-b: #e0e0e3;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  html, body{ margin:0; padding:0; }
+  html, body{
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-feature-settings: "ss01","ss03";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background .25s ease, color .25s ease;
+  }
+  body{
+    min-height: 100vh;
+    letter-spacing: -0.01em;
+  }
+  a{ color: inherit; text-decoration: none; }
+  button{ font-family: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+  img{ display: block; max-width: 100%; }
+
+  /* ============ HEADER ============ */
+  .header{
+    position: sticky; top:0; z-index: 40;
+    height: var(--header-h);
+    display:flex; align-items:center;
+    background: color-mix(in oklab, var(--bg) 82%, transparent);
+    backdrop-filter: saturate(1.2) blur(14px);
+    -webkit-backdrop-filter: saturate(1.2) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner{
+    width:100%; max-width: var(--content-max); margin: 0 auto;
+    padding: 0 var(--side-pad);
+    display:flex; align-items:center; justify-content:space-between; gap: 24px;
+  }
+  .brand{
+    display:flex; align-items:center; gap: 8px;
+    font-weight: 700; font-size: 20px; letter-spacing: -0.02em;
+    height: 100%; line-height: 1;
+  }
+  .brand .dot{
+    width:7px; height:7px; border-radius: 50%; background: var(--fg);
+    display:inline-block; flex-shrink: 0;
+  }
+  .brand .name{ font-weight: 800; line-height: 1; }
+  .brand .role{
+    font-size: 12px; color: var(--fg-mute); font-weight: 500;
+    letter-spacing: 0; margin-left: 4px; display: inline-flex; align-items: center;
+  }
+
+  .nav{
+    display:flex; align-items:center; gap: 4px; height: 100%;
+  }
+  .nav a{
+    padding: 8px 14px; font-size: 14px; color: var(--fg-mute);
+    border-radius: 8px; font-weight: 500; display: inline-flex; align-items: center;
+    transition: color .15s, background .15s; height: 36px;
+  }
+  .nav a:hover{ color: var(--fg); background: var(--btn-bg-hover); }
+
+  .header-tools{
+    display:flex; align-items:center; gap: 6px;
+  }
+  .icon-btn{
+    width: 36px; height: 36px; display: inline-flex; align-items:center; justify-content:center;
+    border-radius: 10px; color: var(--fg-mute);
+    transition: background .15s, color .15s;
+  }
+  .icon-btn:hover{ background: var(--btn-bg-hover); color: var(--fg); }
+  .icon-btn svg{ width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;}
+
+  .lang-toggle{
+    display:inline-flex; align-items:center; height: 32px; padding: 3px;
+    border: 1px solid var(--line); border-radius: 999px; margin-left: 4px;
+    background: transparent;
+  }
+  .lang-toggle button{
+    padding: 4px 12px; font-size: 12px; font-weight: 600; color: var(--fg-mute);
+    border-radius: 999px; letter-spacing: 0.02em;
+    transition: background .15s, color .15s;
+  }
+  .lang-toggle button.active{
+    background: var(--fg); color: var(--bg);
+  }
+
+  /* ============ SUBHEADER (categories + sort) ============ */
+  .subhead{
+    position: sticky; top: var(--header-h); z-index: 30;
+    background: color-mix(in oklab, var(--bg) 88%, transparent);
+    backdrop-filter: saturate(1.2) blur(14px);
+    -webkit-backdrop-filter: saturate(1.2) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .subhead-inner{
+    max-width: var(--content-max); margin: 0 auto;
+    padding: 16px var(--side-pad);
+    display:flex; align-items:center; justify-content: space-between; gap: 24px;
+  }
+  .cats{
+    display:flex; flex-wrap: wrap; gap: 8px;
+  }
+  .cat{
+    padding: 9px 16px; font-size: 13px; font-weight: 600;
+    color: var(--btn-fg);
+    background: var(--btn-bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    letter-spacing: -0.005em;
+    display:inline-flex; align-items:center; gap:8px;
+    transition: background .15s, color .15s, border-color .15s, transform .05s;
+    white-space: nowrap;
+  }
+  .cat:hover{ background: var(--btn-bg-hover); border-color: var(--line-strong); }
+  .cat[aria-pressed="true"]{
+    background: var(--btn-active-bg);
+    color: var(--btn-active-fg);
+    border-color: var(--btn-active-bg);
+  }
+  .cat .count{
+    font-size: 11px; opacity: .55; font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sort{
+    position: relative;
+    display:inline-flex; align-items:center;
+  }
+  .sort-btn{
+    display:inline-flex; align-items:center; gap: 8px;
+    padding: 9px 12px 9px 14px; font-size: 13px; font-weight: 600;
+    color: var(--btn-fg); background: var(--btn-bg);
+    border:1px solid var(--line); border-radius: var(--radius-sm);
+    white-space: nowrap;
+  }
+  .sort-btn:hover{ background: var(--btn-bg-hover); }
+  .sort-btn svg{ width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;}
+  .sort-btn .label-key{ color: var(--fg-mute); font-weight: 500; margin-right: 2px;}
+  .sort-menu{
+    position: absolute; right: 0; top: calc(100% + 6px);
+    background: var(--bg-elev); border:1px solid var(--line);
+    border-radius: 10px; padding: 6px; min-width: 200px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.28);
+    display:none; z-index: 50;
+  }
+  .sort.open .sort-menu{ display:block; }
+  .sort-menu button{
+    display:flex; width:100%; align-items:center; justify-content:space-between;
+    padding: 10px 12px; font-size: 13px; font-weight: 500;
+    color: var(--fg); border-radius: 8px;
+  }
+  .sort-menu button:hover{ background: var(--btn-bg-hover); }
+  .sort-menu button.active{ color: var(--fg); }
+  .sort-menu button.active::after{
+    content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--fg);
+  }
+
+  /* ============ GRID ============ */
+  .work-region{
+    max-width: var(--content-max); margin: 0 auto;
+    padding: 28px var(--side-pad) 80px;
+  }
+  .grid{
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--gutter);
+  }
+  @media (max-width: 1200px){ .grid{ grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 820px){  .grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px){  .grid{ grid-template-columns: 1fr; } }
+
+  .card{
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    cursor: pointer;
+    isolation: isolate;
+    transition: transform .3s cubic-bezier(.2,.7,.2,1), border-color .2s;
+  }
+  .card:hover{ border-color: var(--line-strong); }
+  .thumb{
+    position: relative; width: 100%; aspect-ratio: 4/3;
+    overflow: hidden; background: var(--bg-elev-2);
+  }
+  .thumb img{
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .6s cubic-bezier(.2,.7,.2,1);
+  }
+  .card:hover .thumb img{ transform: scale(1.04); }
+  .card .overlay{
+    position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.78) 100%);
+    opacity: 0; transition: opacity .25s;
+    display:flex; align-items:flex-end; padding: 16px;
+  }
+  .card:hover .overlay{ opacity: 1; }
+  .card .overlay .meta{ color: #fff; }
+  .card .overlay .meta .t{ font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+  .card .overlay .meta .s{ font-size: 12px; opacity: .78; margin-top: 4px; }
+  .card .caption{
+    padding: 12px 14px 14px;
+    display:flex; align-items:center; justify-content:space-between; gap: 10px;
+  }
+  .card .caption .l{ min-width: 0; }
+  .card .caption .title{
+    font-size: 14px; font-weight: 600; letter-spacing: -0.01em; color: var(--fg);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .card .caption .sub{
+    font-size: 12px; color: var(--fg-mute); margin-top: 2px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .card .caption .r{
+    font-size: 11px; color: var(--fg-dim); font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em; white-space: nowrap;
+  }
+
+  .empty{
+    padding: 80px 20px; text-align:center; color: var(--fg-mute);
+    font-size: 14px;
+  }
+
+  /* ============ SECTION COMMON ============ */
+  .section{
+    max-width: var(--content-max); margin: 0 auto;
+    padding: 60px var(--side-pad);
+    border-top: 1px solid var(--line);
+    scroll-margin-top: calc(var(--header-h) + var(--subhead-h));
+  }
+  .section h2{
+    font-size: 12px; font-weight: 700; letter-spacing: 0.14em;
+    color: var(--fg-dim); margin: 0 0 24px; text-transform: uppercase;
+  }
+
+  /* ============ VALUE SECTION (대체불가 가치) ============ */
+  .value-quote-box{
+    margin-bottom: 32px;
+  }
+  .value-title{
+    font-size: clamp(22px, 3vw, 28px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.35; color: var(--fg);
+    margin: 0 0 16px 0;
+  }
+  .value-desc{
+    font-size: 15px; color: var(--fg-mute); line-height: 1.7; margin: 0 0 20px 0; max-width: 900px;
+  }
+  .value-quote{
+    font-size: 14px; font-style: italic; color: var(--fg-dim);
+    padding-left: 14px; border-left: 3px solid var(--line-strong); margin: 0 0 32px 0;
+  }
+
+  .dept-grid{
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 40px;
+  }
+  @media (max-width: 900px){ .dept-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 500px){ .dept-grid{ grid-template-columns: 1fr; } }
+  
+  .dept-card{
+    background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius-md);
+    padding: 18px 20px;
+  }
+  .dept-card h4{ font-size: 15px; font-weight: 700; margin: 0 0 6px 0; color: var(--fg); }
+  .dept-card p{ font-size: 12.5px; color: var(--fg-mute); margin: 0; }
+
+  .value-table-intro{
+    font-size: 14px; color: var(--fg-mute); margin-bottom: 16px; line-height: 1.6;
+  }
+
+  .value-table-wrap{
+    border: 1px solid var(--line); border-radius: var(--radius-md);
+    overflow: hidden; background: var(--bg-elev);
+  }
+  .value-table{
+    width: 100%; border-collapse: collapse; text-align: left; font-size: 14px;
+  }
+  .value-table th, .value-table td{
+    padding: 16px 20px; border-bottom: 1px solid var(--line);
+  }
+  .value-table th{
+    font-size: 12px; font-weight: 700; color: var(--fg-dim); background: var(--bg-elev-2); text-transform: uppercase;
+  }
+  .value-table tr:last-child td{ border-bottom: none; }
+  .value-table tr.total-row td{
+    background: var(--bg-elev-2); font-weight: 700; color: var(--fg); font-size: 15px;
+  }
+  .value-table td.salary{
+    text-align: right; font-weight: 600; font-variant-numeric: tabular-nums;
+  }
+  .value-table th.salary-head{ text-align: right; }
+
+  /* ============ FUTURE PLAN SECTION (향후 실행 계획) ============ */
+  .plan-grid{
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter);
+  }
+  @media (max-width: 960px){ .plan-grid{ grid-template-columns: 1fr; } }
+  .plan-card{
+    background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius-md);
+    padding: 28px 24px; transition: border-color .2s, transform .2s;
+  }
+  .plan-card:hover{ border-color: var(--line-strong); transform: translateY(-2px); }
+  .plan-card .plan-tag{
+    display: inline-block; font-size: 11px; font-weight: 700; color: var(--fg);
+    background: var(--bg-elev-2); border: 1px solid var(--line-strong); border-radius: 6px;
+    padding: 4px 10px; margin-bottom: 16px; letter-spacing: 0.02em;
+  }
+  .plan-card h3{ font-size: 18px; font-weight: 700; color: var(--fg); margin: 0 0 12px 0; }
+  .plan-card p{ font-size: 14px; color: var(--fg-mute); line-height: 1.65; margin: 0 0 16px 0; }
+  .plan-card ul{ margin: 0; padding-left: 18px; color: var(--fg-mute); font-size: 13.5px; line-height: 1.7; }
+  .plan-card li{ margin-bottom: 6px; }
+
+  /* ============ CAPABILITIES ============ */
+  .cap-intro{
+    font-size: 20px; line-height: 1.55; letter-spacing: -0.015em; color: var(--fg);
+    max-width: 760px; margin: 0 0 40px; text-wrap: pretty;
+  }
+  .cap-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter);
+  }
+  @media (max-width: 1000px){ .cap-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px){ .cap-grid{ grid-template-columns: 1fr; } }
+  .cap-card{
+    background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius-md);
+    padding: 24px; transition: border-color .2s, transform .2s;
+  }
+  .cap-card:hover{ border-color: var(--line-strong); transform: translateY(-2px); }
+  .cap-card .cap-no{
+    font-size: 12px; font-weight: 700; color: var(--fg-dim); letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums; margin-bottom: 14px;
+  }
+  .cap-card h3{ font-size: 16px; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 8px; }
+  .cap-card p{ font-size: 13.5px; color: var(--fg-mute); line-height: 1.6; margin: 0 0 14px; }
+  .cap-card .cap-tags{ display:flex; flex-wrap:wrap; gap: 6px; }
+  .cap-card .cap-tag{
+    font-size: 11px; font-weight: 600; color: var(--fg-mute);
+    border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px;
+  }
+
+  /* ============ HISTORY TABLE STYLE (EXPERIENCE & EDUCATION) ============ */
+  .history-list{
+    border: 1px solid var(--line); border-radius: var(--radius-md);
+    background: var(--bg-elev); overflow: hidden;
+  }
+  .history-item{
+    display: grid; grid-template-columns: 200px 1fr;
+    border-bottom: 1px solid var(--line);
+    transition: background .15s;
+  }
+  .history-item:last-child{ border-bottom: none; }
+  .history-item:hover{ background: var(--bg-elev-2); }
+  
+  .history-date{
+    padding: 24px; font-size: 13.5px; color: var(--fg-mute);
+    border-right: 1px solid var(--line); line-height: 1.6;
+  }
+  .history-date .duration{
+    font-size: 12px; color: #5282ff; font-weight: 600; margin-top: 4px; display: block;
+  }
+  
+  .history-content{ padding: 24px; }
+  .history-head{
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px;
+  }
+  .history-head h3{
+    font-size: 16px; font-weight: 700; color: var(--fg); margin: 0;
+  }
+  .history-head .org{
+    font-size: 14px; font-weight: 500; color: var(--fg-dim);
+  }
+  .history-head .badge{
+    font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px;
+    border: 1px solid var(--line-strong); color: var(--fg-mute); background: var(--bg);
+  }
+  .history-desc{
+    font-size: 14px; color: var(--fg-mute); line-height: 1.65; margin: 0; white-space: pre-line;
+  }
+
+  @media (max-width: 768px){
+    .history-item{ grid-template-columns: 1fr; }
+    .history-date{ border-right: none; border-bottom: 1px solid var(--line); padding: 16px 20px; }
+    .history-content{ padding: 20px; }
+  }
+
+  /* ============ ABOUT & WORKING STYLE ============ */
+  .about-layout{
+    display:grid; grid-template-columns: 1.5fr 1fr; gap: 60px; align-items:start;
+  }
+  @media (max-width: 860px){ .about-layout{ grid-template-columns: 1fr; gap: 40px; } }
+  .about-main p{
+    font-size: 19px; line-height: 1.6; letter-spacing: -0.015em; color: var(--fg);
+    margin: 0 0 20px; text-wrap: pretty;
+  }
+  .about-main p.sub{
+    font-size: 15px; color: var(--fg-mute); line-height: 1.7;
+  }
+  
+  .principles{
+    margin-top: 36px; display: grid; gap: 16px;
+  }
+  .principle-item{
+    background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius-sm);
+    padding: 16px 20px;
+  }
+  .principle-item h4{ font-size: 14.5px; font-weight: 700; margin: 0 0 6px; color: var(--fg); }
+  .principle-item p{ font-size: 13px; color: var(--fg-mute); margin: 0; line-height: 1.5; }
+
+  .meta-list{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; font-size: 13px;
+  }
+  .meta-list dt{ color: var(--fg-dim); font-weight: 500; padding: 10px 0; border-top: 1px solid var(--line); }
+  .meta-list dd{ color: var(--fg); font-weight: 500; margin: 0; padding: 10px 0; border-top: 1px solid var(--line); text-align: right;}
+
+  /* ============ CONTACT ============ */
+  .contact{
+    display:flex; align-items:flex-end; justify-content:space-between; gap: 40px; flex-wrap: wrap;
+  }
+  .contact .big{
+    font-size: clamp(32px, 5vw, 64px); font-weight: 800; letter-spacing: -0.035em;
+    line-height: 1; color: var(--fg);
+  }
+  .contact .big a{ border-bottom: 2px solid var(--line-strong); padding-bottom: 4px; transition: border-color .2s;}
+  .contact .big a:hover{ border-color: var(--fg); }
+  .contact .links{ display:flex; gap: 10px; flex-wrap: wrap; }
+  .contact .links a{
+    padding: 10px 16px; border:1px solid var(--line); border-radius: 999px;
+    font-size: 13px; font-weight: 600; color: var(--fg);
+    transition: background .15s, border-color .15s;
+  }
+  .contact .links a:hover{ background: var(--btn-bg-hover); border-color: var(--line-strong); }
+
+  .footer{
+    max-width: var(--content-max); margin: 0 auto;
+    padding: 24px var(--side-pad) 60px;
+    display:flex; justify-content:space-between; color: var(--fg-dim); font-size: 12px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* ============ LIGHTBOX ============ */
+  .lightbox{
+    position: fixed; inset:0; z-index: 100;
+    background: var(--overlay);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display:none;
+    align-items: center; justify-content: center;
+    padding: 40px;
+  }
+  .lightbox.open{ display:flex; }
+  .lb-shell{
+    width: min(1100px, 100%); max-height: calc(100vh - 80px);
+    background: var(--bg-elev); border: 1px solid var(--line);
+    border-radius: 16px; overflow: hidden;
+    display: grid; grid-template-columns: 1.4fr 1fr;
+    box-shadow: 0 24px 80px rgba(0,0,0,.5);
+  }
+  @media (max-width: 860px){ .lb-shell{ grid-template-columns: 1fr; max-height: calc(100vh - 40px); overflow-y:auto;} }
+  .lb-visual{
+    position: relative; background: var(--bg-elev-2); min-height: 400px;
+    aspect-ratio: 4/3; overflow: hidden;
+  }
+  .lb-visual img{
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .lb-info{
+    padding: 40px 36px 32px; display:flex; flex-direction: column; gap: 0;
+    min-height: 0; overflow-y: auto;
+  }
+  .lb-cat{
+    display:inline-flex; align-items:center; gap: 6px; align-self: flex-start;
+    padding: 6px 12px; border:1px solid var(--line); border-radius: 6px;
+    font-size: 11px; color: var(--fg-mute); font-weight: 600; letter-spacing: 0.04em;
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+  .lb-title{ font-size: 28px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.25; color: var(--fg); margin-bottom: 8px; }
+  .lb-sub{ font-size: 14px; color: var(--fg-dim); font-weight: 500; margin-bottom: 28px; }
+  
+  .lb-desc{ 
+    font-size: 15px; color: var(--fg-mute); line-height: 1.75; 
+    letter-spacing: -0.01em; margin: 0 0 32px 0; text-wrap: pretty;
+  }
+  
+  .lb-facts{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; margin-top: auto;
+    padding-top: 24px; border-top: 1px solid var(--line);
+    font-size: 13px;
+  }
+  .lb-facts dt{ color: var(--fg-dim); padding: 6px 0; font-weight: 500;}
+  .lb-facts dd{ color: var(--fg); text-align: right; padding: 6px 0; margin: 0; font-weight: 600;}
+  .lb-close{
+    position: absolute; top: 16px; right: 16px; z-index: 3;
+    width: 36px; height: 36px; border-radius: 999px;
+    background: rgba(0,0,0,.45); color: #fff;
+    display:inline-flex; align-items:center; justify-content:center;
+    backdrop-filter: blur(6px); transition: background .15s;
+  }
+  .lb-close:hover{ background: rgba(0,0,0,.75);}
+  .lb-close svg{ width: 16px; height: 16px; stroke: currentColor; fill:none; stroke-width:2; stroke-linecap:round;}
+
+  .hidden{ display:none !important; }
+  .kr-only, .en-only{ display: none; }
+  html[data-lang="kr"] .kr-only{ display: initial; }
+  html[data-lang="en"] .en-only{ display: initial; }
+  html[data-lang="kr"] .kr-only.block, html[data-lang="en"] .en-only.block { display: block; }
+
+  @media (max-width: 700px){
+    :root{ --side-pad: 20px; }
+    .nav{ display:none; }
+    .brand .role{ display:none; }
+    .subhead-inner{ flex-direction: column; align-items: flex-start; gap: 12px; }
+    .sort{ align-self: flex-end; }
+  }
+</style>
+</head>
+<body>
+
+<!-- =============== HEADER =============== -->
+<header class="header">
+  <div class="header-inner">
+    <a href="#work-grid" class="brand" aria-label="Eun-Chaekim home">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="name">은책임</span>
+      <span class="role">
+        <span class="kr-only">E2S · 디자인/기획 총괄</span>
+        <span class="en-only">E2S · Total Planning & Design Lead</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="primary">
+      <a href="#work-grid" id="navWorkBtn"><span class="kr-only">작업</span><span class="en-only">Work</span></a>
+      <a href="#value"><span class="kr-only">대체불자가치</span><span class="en-only">Irreplaceable Value</span></a>
+      <a href="#plan"><span class="kr-only">향후 계획</span><span class="en-only">Roadmap & Plan</span></a>
+      <a href="#capabilities"><span class="kr-only">역량</span><span class="en-only">Capabilities</span></a>
+      <a href="#experience"><span class="kr-only">경험</span><span class="en-only">Experience</span></a>
+      <a href="#education"><span class="kr-only">교육</span><span class="en-only">Education</span></a>
+      <a href="#about"><span class="kr-only">소개</span><span class="en-only">About</span></a>
+      <a href="#contact"><span class="kr-only">연락처</span><span class="en-only">Contact</span></a>
+    </nav>
+
+    <div class="header-tools">
+      <button class="icon-btn" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">
+        <svg id="iconMoon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg id="iconSun" viewBox="0 0 24 24" aria-hidden="true" style="display:none">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+        </svg>
+      </button>
+
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button data-lang="kr" class="active">KR</button>
+        <button data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- =============== SUBHEADER =============== -->
+<div class="subhead" id="subhead">
+  <div class="subhead-inner">
+    <div class="cats" role="tablist" id="cats"></div>
+    <div class="sort" id="sortWrap">
+      <button class="sort-btn" id="sortBtn" aria-haspopup="true" aria-expanded="false">
+        <span class="label-key kr-only">정렬</span>
+        <span class="label-key en-only">Sort</span>
+        <span id="sortLabel" class="kr-only">최신순</span>
+        <span id="sortLabelEn" class="en-only">Latest</span>
+        <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="sort-menu" id="sortMenu" role="menu">
+        <button data-sort="latest" class="active">
+          <span><span class="kr-only">최신순</span><span class="en-only">Latest</span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =============== WORK GRID =============== -->
+<main class="work-region" id="work-grid">
+  <div class="grid" id="grid"></div>
+  <div class="empty hidden" id="empty">
+    <span class="kr-only">해당 카테고리에 작업이 없습니다.</span>
+    <span class="en-only">No works in this category.</span>
+  </div>
+</main>
+
+<!-- =============== VALUE SECTION (대체불가 직무 가치) =============== -->
+<section class="section" id="value">
+  <h2><span class="kr-only">대체 불가 직무 가치</span><span class="en-only">Irreplaceable Value</span></h2>
+  
+  <div class="value-quote-box">
+    <h3 class="value-title">
+      <span class="kr-only block">"디자이너는 갈 부서가 없다"는 전제, 실무를 해보니 정반대였습니다.</span>
+      <span class="en-only block">"Designers have nowhere else to go" — Practice proved the exact opposite.</span>
+    </h3>
+    <p class="value-desc">
+      <span class="kr-only block">문서 시각화, 보고서 구조화, 제안서 작성은 모든 부서가 매일 필요로 하지만 높은 완성도로 정교히 다루는 인력은 드뭅니다. 전사적 기획 및 데이터 시각화 역량을 바탕으로 어느 부서로든 즉시 투입되어 성과를 내는 대체불가 핵심 자산입니다.</span>
+      <span class="en-only block">Document visualization, report structuring, and proposal drafting are skills required by every team daily. Being fluent across document, web, and UI ecosystems makes me a versatile lead asset ready to deploy anywhere.</span>
+    </p>
+    <div class="value-quote">
+      <span class="kr-only">"다른 부서는 일이 없어지면 이동이 쉬운데, 디자이너는 갈 부서가 없지 않겠냐." — 그동안의 내부 우려</span>
+      <span class="en-only">"Other roles migrate easily when projects end, but where would a designer go?" — Previous internal concerns</span>
+    </div>
+  </div>
+
+  <div class="dept-grid">
+    <div class="dept-card">
+      <h4><span class="kr-only">기술본부</span><span class="en-only">Tech Div.</span></h4>
+      <p><span class="kr-only">영업 제안 진행 중 (증명된 역량)</span><span class="en-only">Active Proposal Support</span></p>
+    </div>
+    <div class="dept-card">
+      <h4><span class="kr-only">신성장사업부</span><span class="en-only">New Business</span></h4>
+      <p><span class="kr-only">PMS 구축 제안 및 참여</span><span class="en-only">PMS Build & Proposals</span></p>
+    </div>
+    <div class="dept-card">
+      <h4><span class="kr-only">사업관리팀</span><span class="en-only">Biz Management</span></h4>
+      <p><span class="kr-only">대표 직속 제안서/보고 지원</span><span class="en-only">Executive Direct Reports</span></p>
+    </div>
+    <div class="dept-card">
+      <h4><span class="kr-only">해외법인 (TCI Inc.)</span><span class="en-only">Overseas Entity</span></h4>
+      <p><span class="kr-only">업무지원 및 디자인 시스템 제작</span><span class="en-only">Business Support & Design Systems</span></p>
+    </div>
+  </div>
+
+  <p class="value-table-intro">
+    <span class="kr-only block">동일한 업무 범위를 각 분야별 전문 직군으로 나눠 채용했을 때 필요했을 인력과 <strong>2026년 국내 10년차 시니어/수석급 전문 직군 시장 평균 연봉</strong> 기준 산출 결과입니다.</span>
+    <span class="en-only block">Estimated staffing costs based on <strong>2026 KR 10-Year Senior Lead Market Average Salary</strong> if hired separately across specialized roles.</span>
+  </p>
+
+  <div class="value-table-wrap">
+    <table class="value-table">
+      <thead>
+        <tr>
+          <th><span class="kr-only">담당 업무</span><span class="en-only">Responsibility</span></th>
+          <th><span class="kr-only">본래 필요한 직군</span><span class="en-only">Required Role</span></th>
+          <th class="salary-head"><span class="kr-only">10년차 평균 연봉</span><span class="en-only">10-Year Avg. Salary</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="kr-only">로고/CI, 명함, 사인물, 사원증</span><span class="en-only">Logo/CI, Business Cards, Signage, Badges</span></td>
+          <td><span class="kr-only">그래픽(브랜드) 디자이너</span><span class="en-only">Brand/Graphic Designer</span></td>
+          <td class="salary">₩6,200만 – 7,000만</td>
+        </tr>
+        <tr>
+          <td><span class="kr-only">카달로그, 편집물</span><span class="en-only">Catalog, Print & Editorial</span></td>
+          <td><span class="kr-only">편집 디자이너</span><span class="en-only">Editorial Designer</span></td>
+          <td class="salary">₩6,000만 – 6,800만</td>
+        </tr>
+        <tr>
+          <td><span class="kr-only">제안서·회사소개 PPT</span><span class="en-only">Proposals & Corporate PPT Decks</span></td>
+          <td><span class="kr-only">문서기획 / PPT 디자이너</span><span class="en-only">Document Planner / PPT Designer</span></td>
+          <td class="salary">₩6,800만 – 7,800만</td>
+        </tr>
+        <tr>
+          <td><span class="kr-only">영상편집</span><span class="en-only">Video Editing & Motion Graphics</span></td>
+          <td><span class="kr-only">영상편집자 / 모션디자이너</span><span class="en-only">Video Editor / Motion Designer</span></td>
+          <td class="salary">₩6,500만 – 7,500만</td>
+        </tr>
+        <tr>
+          <td><span class="kr-only">홈페이지 (한국/미국)</span><span class="en-only">Corporate Websites (KR/US)</span></td>
+          <td><span class="kr-only">웹 디자이너 / 퍼블리셔</span><span class="en-only">Web Designer / Publisher</span></td>
+          <td class="salary">₩7,000만 – 8,200만</td>
+        </tr>
+        <tr>
+          <td><span class="kr-only">HMI 시스템 UI</span><span class="en-only">HMI & Industrial UI/UX</span></td>
+          <td><span class="kr-only">UI/UX 수석 디자이너</span><span class="en-only">Senior UI/UX Designer</span></td>
+          <td class="salary">₩7,500만 – 9,000만</td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2"><span class="kr-only">6개 분야 직군 합산 시 예상 연간 인건비 (대체 가치)</span><span class="en-only">Combined Total Personnel Value (6 Specialized Roles)</span></td>
+          <td class="salary">₩4억 0,000만 – 4억 6,300만</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- =============== FUTURE PLAN SECTION (향후 계획) =============== -->
+<section class="section" id="plan">
+  <h2><span class="kr-only">향후 실행 계획</span><span class="en-only">Roadmap &amp; Future Plans</span></h2>
+  
+  <div class="plan-grid">
+    <div class="plan-card">
+      <span class="plan-tag">01. UI/UX 분야</span>
+      <h3><span class="kr-only">HMI · PMS 시스템 UI 표준화 및 고도화</span><span class="en-only">UI/UX Standardization &amp; Advanced HMI/PMS</span></h3>
+      <p><span class="kr-only">산업 현장 환경 및 엔지니어 관찰 데이터를 반영하여 오작동을 줄이고 사용성을 향상시키는 차세대 UI 컴포넌트를 구축합니다.</span><span class="en-only">Building next-generation UI components based on field observations to minimize errors and maximize efficiency.</span></p>
+      <ul>
+        <li><span class="kr-only">HMI 및 PMS 모니터링 화면 전용 UI 컴포넌트 라이브러리 구축</span><span class="en-only">UI component library for HMI &amp; PMS monitoring</span></li>
+        <li><span class="kr-only">다크모드 / 고대비 모드 적용을 통한 엔지니어 가독성 최적화</span><span class="en-only">High-contrast and dark mode optimizations for operators</span></li>
+        <li><span class="kr-only">웹 기반 제어 모니터링 반응형 레이아웃 가이드 수립</span><span class="en-only">Responsive web monitoring layout guides</span></li>
+      </ul>
+    </div>
+
+    <div class="plan-card">
+      <span class="plan-tag">02. 브랜딩 분야</span>
+      <h3><span class="kr-only">통합 브랜드 가이드라인 및 서체 자산 관리</span><span class="en-only">Unified Brand Identity &amp; Type Assets</span></h3>
+      <p><span class="kr-only">기업의 기술 경쟁력과 신뢰감을 극대화할 수 있도록 전사 브랜드 자산(온·오프라인)의 통합 가이드라인을 고도화합니다.</span><span class="en-only">Standardizing global brand touchpoints across print, digital, and space to establish firm market authority.</span></p>
+      <ul>
+        <li><span class="kr-only">공식 브랜드 서체 및 CI/BI 사용 규칙 전사 가이드라인 정립</span><span class="en-only">Establishing company-wide typeface and brand guidelines</span></li>
+        <li><span class="kr-only">제품 카달로그, IR/영업 제안서 Template 규격화</span><span class="en-only">Standardizing proposal &amp; catalog templates</span></li>
+        <li><span class="kr-only">오피스 공간 브랜딩 및 서식 자산 일관성 유지</span><span class="en-only">Maintaining office space branding and stationery consistency</span></li>
+      </ul>
+    </div>
+
+    <div class="plan-card">
+      <span class="plan-tag">03. 해외 업무 분야</span>
+      <h3><span class="kr-only">글로벌 디자인 시스템 및 TCI Inc. 지원</span><span class="en-only">Global Design Systems &amp; TCI Inc. Operations</span></h3>
+      <p><span class="kr-only">미국 법인(TCI Inc.) 및 해외 파트너십 확대를 위한 다국어 웹 시스템 운용과 글로벌 마케팅 시각자산을 확충합니다.</span><span class="en-only">Scaling global web operations and localized marketing assets to support US entity growth.</span></p>
+      <ul>
+        <li><span class="kr-only">TCI Inc. 해외 법인 공식 웹사이트 직접 운용 및 유지보수</span><span class="en-only">Direct FTP management &amp; maintenance of TCI Inc. site</span></li>
+        <li><span class="kr-only">글로벌 타겟 맞춤형 영문 기술 제안서 및 홍보 미디어 제작</span><span class="en-only">English technical proposal decks &amp; global media assets</span></li>
+        <li><span class="kr-only">해외 전시회 및 글로벌 미팅 커뮤니케이션 지원 시스템 구축</span><span class="en-only">Supporting global exhibitions &amp; cross-border syncs</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- =============== CAPABILITIES =============== -->
+<section class="section" id="capabilities">
+  <h2>Capabilities</h2>
+  <p class="cap-intro">
+    <span class="kr-only block">비즈니스의 목적을 정확히 이해하고, 기획부터 UI/UX 디자인, 브랜딩, 시스템 구축까지 하나의 일관된 경험으로 시각화합니다.</span>
+    <span class="en-only block">I understand business goals clearly and visualize everything from planning and UI/UX design to branding and system implementation into one seamless experience.</span>
+  </p>
+  <div class="cap-grid" id="capGrid"></div>
+</section>
+
+<!-- =============== EXPERIENCE SECTION =============== -->
+<section class="section" id="experience">
+  <h2><span class="kr-only">인턴 · 대외활동 &amp; 경험</span><span class="en-only">Experience &amp; Activities</span></h2>
+  <div class="history-list">
+    <div class="history-item">
+      <div class="history-date">
+        2023. 11 ~ 2023. 12
+        <span class="duration">2개월</span>
+      </div>
+      <div class="history-content">
+        <div class="history-head">
+          <h3>게임 AI 컨텐츠 관련 브로슈어 디자인 제작</h3>
+          <span class="badge">기타</span>
+        </div>
+        <p class="history-desc">- 한국외국어대학교
+- 대학진로탐색캠프 SW/AI 교육프로그램 관련 디자인</p>
+      </div>
+    </div>
+
+    <div class="history-item">
+      <div class="history-date">
+        2020. 09 ~ 2021. 09
+        <span class="duration">1년 1개월</span>
+      </div>
+      <div class="history-content">
+        <div class="history-head">
+          <h3>대학원 원우회 활동</h3>
+          <span class="badge">교내활동</span>
+        </div>
+        <p class="history-desc">원우회 활동으로 학교 선후배 간의 인적 네트워크를 확장하기 위한 원우회 App을 기획/홍보 디자인 작업</p>
+      </div>
+    </div>
+
+    <div class="history-item">
+      <div class="history-date">
+        2016. 12 ~ 2018. 08
+        <span class="duration">1년 9개월</span>
+      </div>
+      <div class="history-content">
+        <div class="history-head">
+          <h3>(주)클로렌즈</h3>
+          <span class="badge">자원봉사</span>
+        </div>
+        <p class="history-desc">유기견보호소 봉사를 위해 '클로레인저' 이름으로 활동하며 유기견보호소의 재정자립을 위해 홍보 디자인 활동을 함</p>
+      </div>
+    </div>
+
+    <div class="history-item">
+      <div class="history-date">
+        2017. 11 ~ 2018. 01
+        <span class="duration">3개월</span>
+      </div>
+      <div class="history-content">
+        <div class="history-head">
+          <h3>폭스바겐코리아(주)</h3>
+          <span class="badge">사회활동</span>
+        </div>
+        <p class="history-desc">'프로젝트 New Beginning'
+2018 년 폭스바겐코리아와 '뉴 비기닝 프로젝트(Project New Beginning)'를 진행하였습니다. 유기동물 보호소의 재정자립을 돕는 사회적 스타트업 기업 '클로렌즈'의 디자인을 담당하여 폭스바겐과 제품 콜라보레이션을 하였습니다.
+'당신의 새로운 시작을 응원합니다'라는 프로젝트 슬로건과 함께 팬톤이 선정한 2018 년 울트라바이올렛(Ultra Violet) 컬러로 기획하고 디자인한 폰케이스, 티셔츠, 에코백 등을 만들어 새로운 도전과 모험을 시작하는 사람들을 응원하는 디자인 상품을 만들었습니다.
+폭스바겐코리아와 협업을 통해 젊은 청년들이 사람과 동물과의 공생을 꿈꾸는 사회적 스타트업 기업을 소개하면서 '유기동물 보호소의 재정 자립'에 주목하고, 보호소의 안정적인 운영 아래 유기동물들에게 제 2 의 삶이 펼쳐질 수 있도록 홍보하고 지원 받았습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== EDUCATION SECTION =============== -->
+<section class="section" id="education">
+  <h2><span class="kr-only">교육</span><span class="en-only">Education</span></h2>
+  <div class="history-list">
+    <div class="history-item">
+      <div class="history-date">
+        2023. 03 ~ 2023. 06
+      </div>
+      <div class="history-content">
+        <div class="history-head">
+          <h3>영상편집 모션그래픽 디자인</h3>
+          <span class="org">경기도여성능력개발센터</span>
+        </div>
+        <p class="history-desc">영상편집 및 모션그래픽 제작 교육</p>
+      </div>
+    </div>
+
+    <div class="history-item">
+      <div class="history-date">
+        2018. 07 ~ 2018. 08
+      </div>
+      <div class="history-content">
+        <div class="history-head">
+          <h3>BX 디자인</h3>
+          <span class="org">리메인 홍대점</span>
+        </div>
+        <p class="history-desc">'브랜드' 전략에 대한 이해, 분석, 브랜드 아이덴티티, BI 디자인 분석 등의 이론과 실무 등 세분화된 교육</p>
+      </div>
+    </div>
+
+    <div class="history-item">
+      <div class="history-date">
+        2016. 02 ~ 2016. 06
+      </div>
+      <div class="history-content">
+        <div class="history-head">
+          <h3>퍼블리셔 &amp; 프론트엔드 개발</h3>
+          <span class="org">그린아카데미 강남점</span>
+        </div>
+        <p class="history-desc">웹과 앱의 기본적인 이론 지식부터 html / css / javascript 를 이용한 홈페이지 개발, UX 디자인의 중요성과 사이트 컨텐츠 구축 방법에 대한 교육</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== ABOUT & WORKING STYLE =============== -->
+<section class="section" id="about">
+  <h2>About</h2>
+  <div class="about-layout">
+    <div class="about-main">
+      <p>
+        <span class="kr-only block">문제의 본질을 정의하고, 시스템으로 확장 가능한 디자인을 만드는 은책임(김은정)입니다.</span>
+        <span class="en-only block">I'm Eun-Chaekim (Kim Eun-jung) — defining core problems and building scalable, system-driven designs.</span>
+      </p>
+      <p class="sub">
+        <span class="kr-only block">디자인을 단순히 아름다운 겉모습을 만드는 일에 한정하지 않습니다. 사업적 맥락을 정확히 읽어내고, 복잡한 시스템과 데이터 구조를 사용자가 가장 쉽게 이해할 수 있는 형태의 유저 경험(UX)으로 시각화하는 것에 기쁨을 느끼깁니다. 10년 간 기획, 브랜딩, 웹/UIUX, 문서 시각화 등 다양한 직무 영역을 넘나들며 쌓아온 단단한 연결력을 바탕으로 팀의 성장을 이끕니다.</span>
+        <span class="en-only block">I don't limit design to making things look good. I find joy in connecting business context with complex system architecture, converting them into intuitive user experiences. Over 10 years spanning planning, branding, web/UIUX, and document visualization, I lead team growth with strong connective strength.</span>
+      </p>
+
+      <div class="principles">
+        <div class="principle-item">
+          <h4><span class="kr-only">1. 로직과 근거 중심의 디자인 (Data &amp; Logic-driven)</span><span class="en-only">1. Logic &amp; Rationale-driven Design</span></h4>
+          <p><span class="kr-only">모든 디자인 요소에는 명확한 이유가 있어야 합니다. 사용자의 행동 흐름과 데이터 구조를 정교하게 계산하여 인터페이스를 다듬습니다.</span><span class="en-only">Every design decision has a reason. I refine interfaces by carefully calculating user behavior flows and data structures.</span></p>
+        </div>
+        <div class="principle-item">
+          <h4><span class="kr-only">2. 시스템적 사고와 높은 구현 정확도 (Systemic Approach)</span><span class="en-only">2. Systemic Thinking &amp; Precision</span></h4>
+          <p><span class="kr-only">일회성 결과물에 그치지 않고, 가이드라인과 규칙을 수립하여 누구나 쉽고 일관되게 확장할 수 있는 디자인 시스템을 만듭니다.</span><span class="en-only">Beyond single deliverables, I build design systems and guidelines that ensure consistency and easy scalability for everyone.</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <dl class="meta-list">
+        <dt><span class="kr-only">현재 소속</span><span class="en-only">Current</span></dt>
+        <dd>E2S <span class="kr-only">(디자인/기획 총괄)</span><span class="en-only">(Planning &amp; Design Lead)</span></dd>
+        <dt><span class="kr-only">핵심 역량</span><span class="en-only">Core Skills</span></dt>
+        <dd><span class="kr-only">UI/UX · 디자인 시스템 · 기획</span><span class="en-only">UI/UX · Design Systems · Product</span></dd>
+        <dt><span class="kr-only">포지션 레벨</span><span class="en-only">Position Level</span></dt>
+        <dd><span class="kr-only">10년 차 전문 직군 (책임/총괄)</span><span class="en-only">10-Year Senior Lead</span></dd>
+        <dt><span class="kr-only">선호 폰트/스타일</span><span class="en-only">Aesthetic Preference</span></dt>
+        <dd>Pretendard / Modern &amp; Clean</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- =============== CONTACT =============== -->
+<section class="section" id="contact">
+  <h2>Contact</h2>
+  <div class="contact">
+    <div class="big">
+      <a href="mailto:ejkim@e2s.co.kr">ejkim@e2s.co.kr</a>
+    </div>
+    <div class="links">
+      <a href="https://github.com/euncreator" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="#" target="_blank" rel="noreferrer">Notefolio</a>
+      <a href="#" target="_blank" rel="noreferrer">Behance</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <span>© 2026 Eun-Chaekim. All rights reserved.</span>
+  <span>Total Planning & Design</span>
+</footer>
+
+<!-- =============== LIGHTBOX =============== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+  <div class="lb-shell">
+    <div class="lb-visual" id="lbVisual">
+      <button class="lb-close" id="lbClose" aria-label="Close">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="lb-info">
+      <span class="lb-cat" id="lbCat">Branding</span>
+      <div>
+        <div class="lb-title" id="lbTitle">Project title</div>
+        <div class="lb-sub" id="lbSub">Client · 2026</div>
+      </div>
+      <p class="lb-desc" id="lbDesc"></p>
+      <dl class="lb-facts">
+        <dt><span class="kr-only">역할</span><span class="en-only">Role</span></dt>
+        <dd id="lbRole">Design, Art Direction</dd>
+        <dt><span class="kr-only">연도</span><span class="en-only">Year</span></dt>
+        <dd id="lbYear">2026</dd>
+        <dt><span class="kr-only">카테고리</span><span class="en-only">Category</span></dt>
+        <dd id="lbCatKo">브랜딩/편집</dd>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   DATA
+========================================================= */
+const CATEGORIES = [
+  { id: 'all',    kr: '전체',          en: 'All' },
+  { id: 'brand',  kr: '브랜딩/CI',      en: 'Branding / CI' },
+  { id: 'web',    kr: '웹/디지털',      en: 'Web / Digital' },
+  { id: 'uiux',   kr: 'UI/UX',          en: 'UI/UX' },
+  { id: 'doc',    kr: '문서/편집',      en: 'Document / Editorial' },
+  { id: 'space',  kr: '공간',          en: 'Space / Signage' },
+  { id: 'media',  kr: '영상/굿즈',      en: 'Video / Goods' },
+];
+
+const WORKS = [
+  { 
+    id:'w14', cat:'uiux', 
+    kr:{ t:'PMS 시스템 기획', s:'PMS · 시스템 설계', desc:'발전/제어 현장의 에너지 관리 효율성을 극대화하기 위해 다량의 노드 데이터와 상태를 직관적으로 모니터링할 수 있도록 UI/UX 구조를 정밀 설계했습니다.' }, 
+    en:{ t:'TCI PMS system planning', s:'TCI Inc. · System design', desc:'Designed precise UI/UX structure to intuitively monitor multi-node energy data and device statuses for control site operations.' }, 
+    year:'2026', img:'images/w14.jpg', role:{kr:'시스템 기획, UI/UX', en:'System planning, UI/UX'} 
+  },
+  { 
+    id:'w13', cat:'web', 
+    kr:{ t:'TCI Inc. 미국 법인 웹사이트', s:'TCI Inc. · 해외법인 웹', desc:'미국 현지 시장 반응과 글로벌 파트너십을 고려하여 신뢰감 있는 톤앤매너로 제작된 해외 법인 공식 웹사이트입니다.' }, 
+    en:{ t:'TCI Inc. US site', s:'TCI Inc. · Overseas web', desc:'Official global entity website built with a modern, trustworthy aesthetic tailored for US market partners.' }, 
+    year:'2026', img:'images/w13.jpg', role:{kr:'웹디자인, 가이드라인', en:'Web design, guidelines'} 
+  },
+  { 
+    id:'w12', cat:'uiux', 
+    kr:{ t:'셋톱 TV 게임플랫폼', s:'UI', desc:'플레이 몰입감 제고: 탐색 단계에서 즉시 흥미를 느끼고, 망설임 없이 바로 게임 플레이를 시작하고 싶도록 직관적인 UI 화면을 구성했습니다.' }, 
+    en:{ t:'TV Game Platform (UI/UX)', s:'iircade', desc:'Infused corporate identity into everyday office essentials to boost team pride and internal brand experience.' }, 
+    year:'2023', img:'images/w12.jpg', role:{kr:'그래픽, UI/UX', en:'Graphic, goods planning'} 
+  },
+  { 
+    id:'w11', cat:'brand', 
+    kr:{ t:'TCI 전용 폰트 시스템 제작', s:'TCI Inc. · 전용 폰트 개발', desc:'디스플레이 및 UI 환경에서의 가독성을 극대화하기 위해 모듈 구조를 정격화한 브랜드 익스클루시브 서체 시스템입니다.' }, 
+    en:{ t:'TCI Custom Font System', s:'TCI Inc. · Brand Font', desc:'Custom brand typeface system with standardized module structures optimized for display and UI legibility.' }, 
+    year:'2026', img:'images/w11.jpg', role:{kr:'폰트 디자인, 브랜드 가이드라인', en:'Font design, Brand Guidelines'} 
+  },
+  { 
+    id:'w10', cat:'uiux', 
+    kr:{ t:'HMI 시스템 UI', s:'E2S · 엔지니어링 UI', desc:'엔지니어의 오작동 위험을 낮추고 긴급 상황 시 대처 속도를 높이기 위한 고대비·고시성 중심의 HMI 화면 규격을 설계했습니다.' }, 
+    en:{ t:'HMI system UI improvement', s:'E2S · Engineering UI', desc:'Designed high-contrast, high-legibility HMI layouts to reduce operator error and improve emergency response speed.' }, 
+    year:'2026', img:'images/w10.jpg', role:{kr:'UI/UX 설계', en:'UI/UX design'} 
+  },
+  { 
+    id:'w09', cat:'doc', 
+    kr:{ t:'EMS 특화 제안서', s:'Paragon · 영업 제안서', desc:'복잡한 엔지니어링 기술 스펙을 인포그래픽과 체계적인 목차 구조로 정보 시각화하여 수주 기여도를 극대화했습니다.' }, 
+    en:{ t:'Paragon EMS proposal', s:'Paragon · Sales proposal', desc:'Visualized complex technical specifications into structured infographics to significantly improve pitch effectiveness.' }, 
+    year:'2026', img:'images/w09.jpg', role:{kr:'문서기획, 편집디자인', en:'Doc. planning, editorial'} 
+  },
+  { 
+    id:'w08', cat:'doc', 
+    kr:{ t:'E2S 공식 카달로그', s:'제품 카달로그', desc:'기업 핵심 제품군과 기술 로드맵을 신뢰도 높은 그래픽과 그리드 시스템으로 재구성한 국/영문 카탈로그입니다.' }, 
+    en:{ t:'E2S official catalog', s:'E2S · Product catalog', desc:'Reconstructed key product lines and tech roadmaps using structured grid systems for global distribution.' }, 
+    year:'2026', img:'images/w08.jpg', role:{kr:'편집디자인', en:'Editorial design'} 
+  },
+  { 
+    id:'w07', cat:'doc', 
+    kr:{ t:'회사소개서 디자인', s:'기업소개서', desc:'비즈니스 비전과 기술적 우수성이 한눈에 들어오도록 슬라이드 구조와 다이어그램을 최적화한 프리젠테이션 덱입니다.' }, 
+    en:{ t:'Company profile deck', s:'E2S · Corporate profile', desc:'Optimized presentation decks with custom diagrams to convey company vision and engineering strengths effortlessly.' }, 
+    year:'2026', img:'images/w07.jpg', role:{kr:'문서기획, PPT디자인', en:'Doc. planning, PPT design'} 
+  },
+  { 
+    id:'w06', cat:'web', 
+    kr:{ t:'E2S 공식 홈페이지 구축', s:'E2S · 웹사이트', desc:'모던하고 정갈한 Pretendard 폰트 체계 기반으로 브랜드 가치를 선명히 전달하고 FTP 배포까지 직접 운용·관리한 프로젝트입니다.' }, 
+    en:{ t:'E2S official website', s:'E2S · Website', desc:'Modern website built on precise typography systems, directly managed from design execution to server deployment.' }, 
+    year:'2026', img:'images/w06.jpg', role:{kr:'웹디자인, FTP 직접관리', en:'Web design, FTP management'} 
+  },
+  { 
+    id:'w05', cat:'media', 
+    kr:{ t:'제품 홍보 영상', s:'E2S 프로모션 영상', desc:'제품의 동작 원리와 핵심 제어 기술을 3D/Motion 그래픽 모션으로 시각화하여 메시지 전달력을 강화했습니다.' }, 
+    en:{ t:'Corporate promo video edit', s:'E2S · Promotional video', desc:'Visualized product mechanics and key control tech using motion graphics to strengthen market impact.' }, 
+    year:'2025', img:'images/w05.jpg', role:{kr:'영상편집', en:'Video editing'} 
+  },
+  { 
+    id:'w04', cat:'brand', 
+    kr:{ t:'사원증 및 오피스 브랜딩', s:'E2S · 오피스 시스템', desc:'사내 보안 아이템과 사원증 디자인에 기업 CI 요소를 일관성 있게 적용하여 정돈된 기업 문화를 형성했습니다.' }, 
+    en:{ t:'E-signature & ID badges', s:'E2S · Office system', desc:'Applied corporate CI elements seamlessly to ID badges and office Touchpoints to establish unified company culture.' }, 
+    year:'2025', img:'images/w04.jpg', role:{kr:'브랜딩 시스템', en:'Branding system'} 
+  },
+  { 
+    id:'w03', cat:'brand', 
+    kr:{ t:'명함 및 서식 디자인', s:'오피스 아이덴티티', desc:'다양한 직무와 명함 형태에서도 일관된 브랜드 경험을 줄 수 있도록 엄격한 레이아웃 가이드라인을 규격화했습니다.' }, 
+    en:{ t:'Business cards & signage system', s:'E2S · Office identity', desc:'Standardized layout guidelines ensuring consistent brand experience across all stationery and business cards.' }, 
+    year:'2025', img:'images/w03.jpg', role:{kr:'브랜딩, 편집', en:'Branding, Editorial'} 
+  },
+  { 
+    id:'w02', cat:'space', 
+    kr:{ t:'명동 롯데 팝업스토어', s:'E2S · 팝업스토어 브랜딩 & 공간', desc:'유기견 보호소 지원 캠페인 맥락에 맞춰 방문객 동선과 체험 포인트를 고려한 감성적인 공간 및 굿즈를 기획했습니다.' }, 
+    en:{ t:'Myeongdong Lotte Pop-up Store', s:'E2S · Pop-up Branding & Space', desc:'Designed an emotional spatial layout and eco-goods experience aligned with a shelter support campaign.' }, 
+    year:'2018', img:'images/w02.jpg', role:{kr:'공간 브랜딩, 팝업 기획', en:'Space Branding, Pop-up Planning'} 
+  },
+  { 
+    id:'w01', cat:'brand', 
+    kr:{ t:'E2S 로고 개발 및 상표출원', s:'E2S · CI/BI', desc:'기업의 차세대 기술적 비전을 대표하는 심볼 및 로고타입을 신규 개발하고 무형 자산 보호를 위한 상표 출원까지 완료했습니다.' }, 
+    en:{ t:'E2S logo & trademark filing', s:'E2S · CI/BI', desc:'Developed next-gen corporate identity symbols and managed formal trademark filings to protect visual assets.' }, 
+    year:'2026', img:'images/w01.jpg', role:{kr:'Branding, Trademark', en:'Branding, Trademark'} 
+  },
+];
+
+const CAPABILITIES = [
+  { no:'01', kr:{t:'UI/UX &amp; 제품 기획', d:'HMI, PMS 등 복잡한 제어 및 과금 시스템의 UI/UX 구조 설계 및 제품 기획'}, en:{t:'UI/UX &amp; Product Planning', d:'Designing UI/UX and product architecture for complex control &amp; billing systems'}, tags:['UI/UX','HMI','Product'] },
+  { no:'02', kr:{t:'웹 &amp; 디지털 시스템', d:'한국 및 미국 법인 공식 웹사이트 구축, 직접 서버(FTP) 배포 및 유지보수'}, en:{t:'Web &amp; Digital Systems', d:'Building KR/US corporate websites, direct FTP deployment and maintenance'}, tags:['Web System','FTP'] },
+  { no:'03', kr:{t:'브랜딩 &amp; CI/BI 구축', d:'상표출원부터 명함, 사원증, 오피스 공간 브랜딩까지 통합 가이드라인 정립'}, en:{t:'Branding &amp; Identity', d:'Establishing full brand guidelines from trademarks to office space identity'}, tags:['Branding','Identity'] },
+  { no:'04', kr:{t:'문서 시각화 &amp; 제안서', d:'제안서, 회사소개서, 카달로그 등 기술 및 사업 정보를 명확한 구조로 시각화'}, en:{t:'Document &amp; Proposal Visuals', d:'Structuring and visualizing complex business &amp; tech proposals into clear decks'}, tags:['Proposal','PPT'] },
+  { no:'05', kr:{t:'공간', d:'사내 사인물, 로고 간판, 피난 안내도 등 사용자 이동 동선을 고려한 공간 그래픽'}, en:{t:'Space Signage', d:'Designing interior signage and spatial graphics aligned with movement flows'}, tags:['Signage','Spatial'] },
+  { no:'06', kr:{t:'글로벌 협업 지원', d:'미국 법인 디자인 시스템 구축 및 기술 스펙 파악을 통한 글로벌 커뮤니케이션 지원'}, en:{t:'Global Collaboration', d:'Analyzing tech specs &amp; building US design systems to support global initiatives'}, tags:['Global Ops','TCI Inc.'] },
+];
+
+/* =========================================================
+   STATE & HELPERS
+========================================================= */
+const state = {
+  cat: 'all',
+  sort: 'latest',
+  lang: localStorage.getItem('eundi.lang') || 'kr',
+  theme: localStorage.getItem('eundi.theme') || 'dark',
+};
+
+function t(node){ return state.lang === 'kr' ? node.kr : node.en; }
+function catLabel(id){
+  const c = CATEGORIES.find(c => c.id === id);
+  return state.lang === 'kr' ? c.kr : c.en;
+}
+function filterAndSort(){
+  let list = WORKS.slice();
+  if (state.cat !== 'all') list = list.filter(w => w.cat === state.cat);
+  if (state.sort === 'latest'){
+    list.sort((a,b) => Number(b.year) - Number(a.year) || b.id.localeCompare(a.id));
+  }
+  return list;
+}
+function countFor(catId){
+  return catId === 'all' ? WORKS.length : WORKS.filter(w => w.cat === catId).length;
+}
+
+function scrollToWorkArea(){
+  const target = document.getElementById('work-grid');
+  if (!target) return;
+  const headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 68;
+  const subheadHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--subhead-h')) || 72;
+  const offset = headerHeight + subheadHeight;
+  
+  const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+  window.scrollTo({
+    top: Math.max(0, targetPosition),
+    behavior: 'smooth'
+  });
+}
+
+/* =========================================================
+   RENDER FUNCTIONS
+========================================================= */
+function renderCats(){
+  const el = document.getElementById('cats');
+  el.innerHTML = CATEGORIES.map(c => {
+    const label = state.lang === 'kr' ? c.kr : c.en;
+    const pressed = c.id === state.cat ? 'true' : 'false';
+    return `<button class="cat" role="tab" aria-pressed="${pressed}" data-cat="${c.id}">
+      <span class="label">${label}</span>
+      <span class="count">${countFor(c.id)}</span>
+    </button>`;
+  }).join('');
+  el.querySelectorAll('.cat').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.cat = btn.dataset.cat;
+      renderCats();
+      renderGrid();
+      scrollToWorkArea();
+    });
+  });
+}
+
+function renderCaps(){
+  const el = document.getElementById('capGrid');
+  if (!el) return;
+  el.innerHTML = CAPABILITIES.map(c => {
+    const tx = state.lang === 'kr' ? c.kr : c.en;
+    return `
+    <div class="cap-card">
+      <div class="cap-no">${c.no}</div>
+      <h3>${tx.t}</h3>
+      <p>${tx.d}</p>
+      <div class="cap-tags">${c.tags.map(t => `<span class="cap-tag">${t}</span>`).join('')}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderGrid(){
+  const grid = document.getElementById('grid');
+  const empty = document.getElementById('empty');
+  const list = filterAndSort();
+  if (!list.length){
+    grid.innerHTML = ''; empty.classList.remove('hidden');
+    return;
+  }
+  empty.classList.add('hidden');
+  grid.innerHTML = list.map(w => {
+    const tx = t(w);
+    return `
+    <article class="card" data-id="${w.id}" tabindex="0">
+      <div class="thumb">
+        <img src="${w.img}" alt="${tx.t}" loading="lazy">
+        <div class="overlay">
+          <div class="meta">
+            <div class="t">${tx.t}</div>
+            <div class="s">${catLabel(w.cat)} · ${w.year}</div>
+          </div>
+        </div>
+      </div>
+      <div class="caption">
+        <div class="l">
+          <div class="title">${tx.t}</div>
+          <div class="sub">${tx.s}</div>
+        </div>
+        <div class="r">${w.year}</div>
+      </div>
+    </article>`;
+  }).join('');
+
+  grid.querySelectorAll('.card').forEach(c => {
+    c.addEventListener('click', () => openLightbox(c.dataset.id));
+    c.addEventListener('keydown', e => { if (e.key === 'Enter') openLightbox(c.dataset.id); });
+  });
+}
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+function openLightbox(id){
+  const w = WORKS.find(x => x.id === id);
+  if (!w) return;
+  const tx = t(w);
+  const lbVisual = document.getElementById('lbVisual');
+  
+  lbVisual.querySelector('img')?.remove();
+  const imgEl = document.createElement('img');
+  imgEl.src = w.img;
+  imgEl.alt = tx.t;
+  lbVisual.insertBefore(imgEl, lbVisual.firstChild);
+
+  document.getElementById('lbCat').textContent = catLabel(w.cat);
+  document.getElementById('lbTitle').textContent = tx.t;
+  document.getElementById('lbSub').textContent = tx.s + ' · ' + w.year;
+  document.getElementById('lbDesc').textContent = tx.desc || '';
+  document.getElementById('lbRole').textContent = state.lang === 'kr' ? w.role.kr : w.role.en;
+  document.getElementById('lbYear').textContent = w.year;
+  document.getElementById('lbCatKo').textContent = catLabel(w.cat);
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+document.getElementById('lightbox').addEventListener('click', e => {
+  if (e.target.id === 'lightbox') closeLightbox();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+/* =========================================================
+   SORT & THEME & LANG & NAV
+========================================================= */
+const navWorkBtn = document.getElementById('navWorkBtn');
+if (navWorkBtn) {
+  navWorkBtn.addEventListener('click', e => {
+    e.preventDefault();
+    scrollToWorkArea();
+  });
+}
+
+const sortWrap = document.getElementById('sortWrap');
+document.getElementById('sortBtn').addEventListener('click', e => {
+  e.stopPropagation();
+  sortWrap.classList.toggle('open');
+  document.getElementById('sortBtn').setAttribute('aria-expanded', sortWrap.classList.contains('open'));
+});
+document.addEventListener('click', () => sortWrap.classList.remove('open'));
+document.getElementById('sortMenu').querySelectorAll('button').forEach(b => {
+  b.addEventListener('click', () => {
+    document.getElementById('sortMenu').querySelectorAll('button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    state.sort = b.dataset.sort;
+    renderGrid();
+    sortWrap.classList.remove('open');
+  });
+});
+
+function applyTheme(){
+  document.documentElement.setAttribute('data-theme', state.theme);
+  document.getElementById('iconMoon').style.display = state.theme === 'dark' ? '' : 'none';
+  document.getElementById('iconSun').style.display  = state.theme === 'dark' ? 'none' : '';
+  localStorage.setItem('eundi.theme', state.theme);
+}
+document.getElementById('themeToggle').addEventListener('click', () => {
+  state.theme = state.theme === 'dark' ? 'light' : 'dark';
+  applyTheme();
+});
+
+function applyLang(){
+  document.documentElement.setAttribute('data-lang', state.lang);
+  document.documentElement.setAttribute('lang', state.lang === 'kr' ? 'ko' : 'en');
+  document.querySelectorAll('.lang-toggle button').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === state.lang);
+  });
+  localStorage.setItem('eundi.lang', state.lang);
+  renderCats();
+  renderGrid();
+  renderCaps();
+}
+document.querySelectorAll('.lang-toggle button').forEach(b => {
+  b.addEventListener('click', () => {
+    state.lang = b.dataset.lang;
+    applyLang();
+  });
+});
+
+/* =========================================================
+   INIT
+========================================================= */
+applyTheme();
+applyLang();
+</script>
+</body>
+</html>
