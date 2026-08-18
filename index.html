@@ -7,6 +7,7 @@
 
 <link rel="stylesheet" as="style" crossorigin
   href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 <style>
   :root{
@@ -74,6 +75,11 @@
   button{ font-family: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
   img{ display: block; max-width: 100%; }
 
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+  }
+
   /* ============ HEADER ============ */
   .header{
     position: sticky; top:0; z-index: 40;
@@ -139,7 +145,7 @@
     background: var(--fg); color: var(--bg);
   }
 
-  /* ============ SUBHEADER (categories + sort) ============ */
+  /* ============ SUBHEADER ============ */
   .subhead{
     position: sticky; top: var(--header-h); z-index: 30;
     background: color-mix(in oklab, var(--bg) 88%, transparent);
@@ -343,25 +349,38 @@
   }
   .value-table th.salary-head{ text-align: right; }
 
-  /* ============ FUTURE PLAN SECTION (향후 실행 계획) ============ */
-  .plan-grid{
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter);
+  /* ============ FUTURE PLAN SECTION (9 INDIVIDUAL BOXES) ============ */
+  .plan-intro{
+    font-size: 15px; color: var(--fg-mute); line-height: 1.65; margin: 0 0 28px 0; max-width: 800px;
   }
-  @media (max-width: 960px){ .plan-grid{ grid-template-columns: 1fr; } }
-  .plan-card{
+  .plan-boxes{
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  }
+  @media (max-width: 1100px){ .plan-boxes{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 680px){ .plan-boxes{ grid-template-columns: 1fr; } }
+
+  .plan-box{
     background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius-md);
-    padding: 28px 24px; transition: border-color .2s, transform .2s;
+    padding: 24px; transition: border-color .2s, transform .2s; display: flex; flex-direction: column;
   }
-  .plan-card:hover{ border-color: var(--line-strong); transform: translateY(-2px); }
-  .plan-card .plan-tag{
-    display: inline-block; font-size: 11px; font-weight: 700; color: var(--fg);
-    background: var(--bg-elev-2); border: 1px solid var(--line-strong); border-radius: 6px;
-    padding: 4px 10px; margin-bottom: 16px; letter-spacing: 0.02em;
+  .plan-box:hover{ border-color: var(--line-strong); transform: translateY(-3px); }
+  .plan-box-head{
+    display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;
   }
-  .plan-card h3{ font-size: 18px; font-weight: 700; color: var(--fg); margin: 0 0 12px 0; }
-  .plan-card p{ font-size: 14px; color: var(--fg-mute); line-height: 1.65; margin: 0 0 16px 0; }
-  .plan-card ul{ margin: 0; padding-left: 18px; color: var(--fg-mute); font-size: 13.5px; line-height: 1.7; }
-  .plan-card li{ margin-bottom: 6px; }
+  .plan-box-icon{
+    width: 42px; height: 42px; border-radius: 10px; background: var(--bg-elev-2);
+    border: 1px solid var(--line-strong); display: inline-flex; align-items: center; justify-content: center;
+    color: var(--fg);
+  }
+  .plan-box-icon .material-symbols-outlined{ font-size: 22px; }
+  .plan-box-num{
+    font-size: 11px; font-weight: 700; color: var(--fg-dim); font-variant-numeric: tabular-nums;
+    letter-spacing: 0.05em;
+  }
+  .plan-box h3{ font-size: 17px; font-weight: 700; color: var(--fg); margin: 0 0 10px 0; line-height: 1.3; }
+  .plan-box p{ font-size: 13.5px; color: var(--fg-mute); line-height: 1.6; margin: 0 0 14px 0; flex-grow: 1; }
+  .plan-box ul{ margin: 0; padding-left: 16px; color: var(--fg-mute); font-size: 13px; line-height: 1.65; }
+  .plan-box li{ margin-bottom: 4px; }
 
   /* ============ CAPABILITIES ============ */
   .cap-intro{
@@ -390,7 +409,7 @@
     border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px;
   }
 
-  /* ============ HISTORY TABLE STYLE (EXPERIENCE & EDUCATION) ============ */
+  /* ============ HISTORY TABLE STYLE ============ */
   .history-list{
     border: 1px solid var(--line); border-radius: var(--radius-md);
     background: var(--bg-elev); overflow: hidden;
@@ -580,7 +599,7 @@
 
     <nav class="nav" aria-label="primary">
       <a href="#work-grid" id="navWorkBtn"><span class="kr-only">작업</span><span class="en-only">Work</span></a>
-      <a href="#value"><span class="kr-only">대체불자가치</span><span class="en-only">Irreplaceable Value</span></a>
+      <a href="#value"><span class="kr-only">대체불가직무</span><span class="en-only">Irreplaceable Value</span></a>
       <a href="#plan"><span class="kr-only">향후 계획</span><span class="en-only">Roadmap & Plan</span></a>
       <a href="#capabilities"><span class="kr-only">역량</span><span class="en-only">Capabilities</span></a>
       <a href="#experience"><span class="kr-only">경험</span><span class="en-only">Experience</span></a>
@@ -726,39 +745,128 @@
 </section>
 
 <section class="section" id="plan">
-  <h2><span class="kr-only">향후 실행 계획</span><span class="en-only">Roadmap &amp; Future Plans</span></h2>
+  <h2><span class="kr-only">향후 실행 계획</span><span class="en-only">Strategic Roadmap</span></h2>
   
-  <div class="plan-grid">
-    <div class="plan-card">
-      <span class="plan-tag">01. UI/UX 분야</span>
-      <h3><span class="kr-only">HMI · PMS 시스템 UI 표준화 및 고도화</span><span class="en-only">UI/UX Standardization &amp; Advanced HMI/PMS</span></h3>
-      <p><span class="kr-only">산업 현장 환경 및 엔지니어 관찰 데이터를 반영하여 오작동을 줄이고 사용성을 향상시키는 차세대 UI 컴포넌트를 구축합니다.</span><span class="en-only">Building next-generation UI components based on field observations to minimize errors and maximize efficiency.</span></p>
+  <p class="plan-intro">
+    <span class="kr-only block">경영진이 한눈에 파악할 수 있도록 추진 예정인 9가지 핵심 과제를 각각의 개별 실행 박스로 명확히 분리하여 수립했습니다.</span>
+    <span class="en-only block">9 strategic initiatives categorized into distinct executive review cards for clear decision-making.</span>
+  </p>
+
+  <div class="plan-boxes">
+    <div class="plan-box">
+      <div class="plan-box-head">
+        <div class="plan-box-icon"><span class="material-symbols-outlined">account_tree</span></div>
+        <div class="plan-box-num">01 / PLAN</div>
+      </div>
+      <h3><span class="kr-only">부서별 · 프로젝트별 PMS 시스템</span><span class="en-only">Departmental PMS System</span></h3>
+      <p><span class="kr-only">각 부서의 프로젝트 진행 상황, 노드 모니터링, 업무 진척도를 한눈에 관리하는 통합 PMS UI/UX 구축</span><span class="en-only">Building specialized PMS UI/UX to monitor departmental projects and node workflows.</span></p>
       <ul>
-        <li><span class="kr-only">HMI 및 PMS 모니터링 화면 전용 UI 컴포넌트 라이브러리 구축</span><span class="en-only">UI component library for HMI &amp; PMS monitoring</span></li>
-        <li><span class="kr-only">다크모드 / 고대비 모드 적용을 통한 엔지니어 가독성 최적화</span><span class="en-only">High-contrast and dark mode optimizations for operators</span></li>
-        <li><span class="kr-only">웹 기반 제어 모니터링 반응형 레이아웃 가이드 수립</span><span class="en-only">Responsive web monitoring layout guides</span></li>
+        <li><span class="kr-only">부서별 프로젝트 모니터링 대시보드</span><span class="en-only">Departmental Project Dashboards</span></li>
+        <li><span class="kr-only">프로젝트 통합 관리 및 스케줄링 UI</span><span class="en-only">Integrated Workflow Management UI</span></li>
       </ul>
     </div>
 
-    <div class="plan-card">
-      <span class="plan-tag">02. 브랜딩 분야</span>
-      <h3><span class="kr-only">통합 브랜드 가이드라인 및 서체 자산 관리</span><span class="en-only">Unified Brand Identity &amp; Type Assets</span></h3>
-      <p><span class="kr-only">기업의 기술 경쟁력과 신뢰감을 극대화할 수 있도록 전사 브랜드 자산(온·오프라인)의 통합 가이드라인을 고도화합니다.</span><span class="en-only">Standardizing global brand touchpoints across print, digital, and space to establish firm market authority.</span></p>
+    <div class="plan-box">
+      <div class="plan-box-head">
+        <div class="plan-box-icon"><span class="material-symbols-outlined">dataset</span></div>
+        <div class="plan-box-num">02 / PLAN</div>
+      </div>
+      <h3><span class="kr-only">전사 ERP 기획 &amp; UI/UX 디자인</span><span class="en-only">Enterprise ERP Planning &amp; UI/UX</span></h3>
+      <p><span class="kr-only">사내 핵심 업무 프로세스와 자원 관리를 하나로 연결하는 통합 ERP 시스템을 직접 기획하고 디자인합니다.</span><span class="en-only">Direct end-to-end planning and UI/UX architecture for enterprise resource management.</span></p>
       <ul>
-        <li><span class="kr-only">공식 브랜드 서체 및 CI/BI 사용 규칙 전사 가이드라인 정립</span><span class="en-only">Establishing company-wide typeface and brand guidelines</span></li>
-        <li><span class="kr-only">제품 카달로그, IR/영업 제안서 Template 규격화</span><span class="en-only">Standardizing proposal &amp; catalog templates</span></li>
-        <li><span class="kr-only">오피스 공간 브랜딩 및 서식 자산 일관성 유지</span><span class="en-only">Maintaining office space branding and stationery consistency</span></li>
+        <li><span class="kr-only">전사 자원/업무 통합 인터페이스 구성</span><span class="en-only">Integrated Resource Management Interface</span></li>
+        <li><span class="kr-only">직원/관리자 역할별 맞춤 웹 UI 설계</span><span class="en-only">Role-based Responsive UX Design</span></li>
       </ul>
     </div>
 
-    <div class="plan-card">
-      <span class="plan-tag">03. 해외 업무 분야</span>
-      <h3><span class="kr-only">글로벌 디자인 시스템 및 TCI Inc. 지원</span><span class="en-only">Global Design Systems &amp; TCI Inc. Operations</span></h3>
-      <p><span class="kr-only">미국 법인(TCI Inc.) 및 해외 파트너십 확대를 위한 다국어 웹 시스템 운용과 글로벌 마케팅 시각자산을 확충합니다.</span><span class="en-only">Scaling global web operations and localized marketing assets to support US entity growth.</span></p>
+    <div class="plan-box">
+      <div class="plan-box-head">
+        <div class="plan-box-icon"><span class="material-symbols-outlined">domain</span></div>
+        <div class="plan-box-num">03 / PLAN</div>
+      </div>
+      <h3><span class="kr-only">공간디자인 &amp; 브랜딩 시각화</span><span class="en-only">Spatial Design &amp; Office Branding</span></h3>
+      <p><span class="kr-only">사내 및 외부 전시 공간 인포그래픽, 환경 사이니지, 공간에 기업 정체성을 입히는 브랜딩 요소 디자인</span><span class="en-only">Designing spatial infographics, environmental signage, and office branding elements.</span></p>
       <ul>
-        <li><span class="kr-only">TCI Inc. 해외 법인 공식 웹사이트 직접 운용 및 유지보수</span><span class="en-only">Direct FTP management &amp; maintenance of TCI Inc. site</span></li>
-        <li><span class="kr-only">글로벌 타겟 맞춤형 영문 기술 제안서 및 홍보 미디어 제작</span><span class="en-only">English technical proposal decks &amp; global media assets</span></li>
-        <li><span class="kr-only">해외 전시회 및 글로벌 미팅 커뮤니케이션 지원 시스템 구축</span><span class="en-only">Supporting global exhibitions &amp; cross-border syncs</span></li>
+        <li><span class="kr-only">공간 인포그래픽 및 사이니지 그래픽 개발</span><span class="en-only">Spatial Infographics &amp; Signage Design</span></li>
+        <li><span class="kr-only">오피스 및 전시 공간 통합 브랜딩 구현</span><span class="en-only">Integrated Office &amp; Exhibition Branding</span></li>
+      </ul>
+    </div>
+
+    <div class="plan-box">
+      <div class="plan-box-head">
+        <div class="plan-box-icon"><span class="material-symbols-outlined">campaign</span></div>
+        <div class="plan-box-num">04 / PLAN</div>
+      </div>
+      <h3><span class="kr-only">사내 미디어 &amp; 홍보 채널 관리</span><span class="en-only">Corporate Social Media &amp; PR Hub</span></h3>
+      <p><span class="kr-only">인스타그램, 유튜브, 사내 매거진 등 회사 공식 브랜드 홍보 채널의 시각 콘텐츠 및 비주얼 브랜딩 통합 총괄</span><span class="en-only">Directing corporate social channels including Instagram, YouTube, and internal magazines.</span></p>
+      <ul>
+        <li><span class="kr-only">인스타그램 / 유튜브 전용 비주얼 템플릿 개발</span><span class="en-only">Instagram &amp; YouTube Visual Templates</span></li>
+        <li><span class="kr-only">사내외 브랜딩 매거진 및 홍보 콘텐츠 제작</span><span class="en-only">Corporate Branding Magazine &amp; Media PR</span></li>
+      </ul>
+    </div>
+
+    <div class="plan-box">
+      <div class="plan-box-head">
+        <div class="plan-box-icon"><span class="material-symbols-outlined">photo_library</span></div>
+        <div class="plan-box-num">05 / PLAN</div>
+      </div>
+      <h3><span class="kr-only">사내 커뮤니티 &amp; 미디어 전산망</span><span class="en-only">Internal Community &amp; Photo Archive</span></h3>
+      <p><span class="kr-only">사내 소통 채널, 커뮤니티 게시판, 워크샵 및 조직 행사 사진/미디어를 함께 공유하는 전산망을 만듭니다.</span><span class="en-only">Building enterprise intranet for community discussions, workshop photo archives, and internal syncs.</span></p>
+      <ul>
+        <li><span class="kr-only">사내 소통 커뮤니티 게시판/채널 구축</span><span class="en-only">Internal Discussion &amp; Communication Hub</span></li>
+        <li><span class="kr-only">조직 워크샵/행사 사진 데이터베이스 공유</span><span class="en-only">Workshop &amp; Event Media Archive</span></li>
+      </ul>
+    </div>
+
+    <div class="plan-box">
+      <div class="plan-box-head">
+        <div class="plan-box-icon"><span class="material-symbols-outlined">groups</span></div>
+        <div class="plan-box-num">06 / PLAN</div>
+      </div>
+      <h3><span class="kr-only">영업 전용 앱 &amp; 고객관리(CRM)</span><span class="en-only">Sales App &amp; Customer CRM</span></h3>
+      <p><span class="kr-only">영업 담당자를 위한 모바일 앱과 고객 정보, 수주 현황을 실시간 관리하고 소통하는 웹 포털 시스템 구축</span><span class="en-only">Developing dedicated mobile apps for sales teams and web CRM portals for customer management.</span></p>
+      <ul>
+        <li><span class="kr-only">영업 필드 지원 및 수주 관리 앱 UI</span><span class="en-only">Mobile Sales &amp; Deal Tracking App</span></li>
+        <li><span class="kr-only">고객 정보 관리 및 소통 전용 웹 사이트</span><span class="en-only">Customer Management Web Portal</span></li>
+      </ul>
+    </div>
+
+    <div class="plan-box">
+      <div class="plan-box-head">
+        <div class="plan-box-icon"><span class="material-symbols-outlined">text_fields</span></div>
+        <div class="plan-box-num">07 / PLAN</div>
+      </div>
+      <h3><span class="kr-only">E2S · TCI 브랜드 자체 폰트 제작</span><span class="en-only">Proprietary Brand Typeface</span></h3>
+      <p><span class="kr-only">화면 디스플레이와 UI 가독성에 최적화된 브랜드 전용 서체를 직접 개발하고 기업 고유 자산으로 체계화합니다.</span><span class="en-only">Developing custom font families optimized for UI displays and corporate branding identity.</span></p>
+      <ul>
+        <li><span class="kr-only">E2S / TCI 브랜드 전용 폰트 완제 제작</span><span class="en-only">E2S / TCI Exclusive Typeface System</span></li>
+        <li><span class="kr-only">전사 문서 및 웹/UI 시스템 표준 적용</span><span class="en-only">Standardizing Font Assets Across UI &amp; Docs</span></li>
+      </ul>
+    </div>
+
+    <div class="plan-box">
+      <div class="plan-box-head">
+        <div class="plan-box-icon"><span class="material-symbols-outlined">workspace_premium</span></div>
+        <div class="plan-box-num">08 / PLAN</div>
+      </div>
+      <h3><span class="kr-only">디자인 상표/특허 출원 &amp; 수상 신청</span><span class="en-only">IP Trademarks &amp; Design Awards</span></h3>
+      <p><span class="kr-only">독자적 디자인 자산의 국내외 상표·특허 출원 및 Red Dot/iF 등 주요 어워드 수상을 통해 기업 기여도를 높입니다.</span><span class="en-only">Securing design patents and entering prestigious international design awards to boost company value.</span></p>
+      <ul>
+        <li><span class="kr-only">국/내외 상표 및 디자인 특허 출원 추진</span><span class="en-only">Domestic &amp; Global IP Filings</span></li>
+        <li><span class="kr-only">글로벌 Design Award 수상 도전 및 기여</span><span class="en-only">Red Dot, iF, Good Design Entry</span></li>
+      </ul>
+    </div>
+
+    <div class="plan-box">
+      <div class="plan-box-head">
+        <div class="plan-box-icon"><span class="material-symbols-outlined">record_voice_over</span></div>
+        <div class="plan-box-num">09 / PLAN</div>
+      </div>
+      <h3><span class="kr-only">대외 강연 &amp; 브랜드 위상 제고</span><span class="en-only">External Lectures &amp; Brand PR</span></h3>
+      <p><span class="kr-only">대외 세미나 및 외부 기술/디자인 강의 활동을 적극 추진하여 회사의 대외적인 위상과 브랜딩을 강화합니다.</span><span class="en-only">Giving industry lectures &amp; seminars to build external trust and elevate corporate prestige.</span></p>
+      <ul>
+        <li><span class="kr-only">외부 전문 세미나/강의를 통한 회사 홍보</span><span class="en-only">External Guest Speaking &amp; Keynotes</span></li>
+        <li><span class="kr-only">산업 디자인/UIUX 성공 사례 브랜드화</span><span class="en-only">Branding Industry Success Cases</span></li>
       </ul>
     </div>
   </div>
