@@ -1366,6 +1366,12 @@ const CATEGORIES = [
 ];
 
 const WORKS = [
+    {
+  id:'w21', cat:'brand',
+  kr:{ t:'AI 생성 가상 현장 이미지 제작', s:'원자력 등 촬영 제한 시설용', desc:'원자력 발전소처럼 보안상 실제 촬영이 어려운 폐쇄적 환경을 위해, AI를 활용해 현실감 있는 가상의 현장·설비 이미지를 제작했습니다. 실제 사진을 대체하면서도 기술적 신뢰감을 잃지 않는 비주얼을 카탈로그와 홍보 자료에 적용했습니다.' },
+  en:{ t:'AI-Generated Synthetic Imagery', s:'For Restricted Facilities (Nuclear, etc.)', desc:'Produced realistic AI-generated site and equipment imagery for closed environments — such as nuclear power plants — where actual photography is restricted for security reasons, substituting for real photos without sacrificing technical credibility.' },
+  year:'2026', img:'images/w21.jpg', role:{kr:'AI 이미지 생성, 비주얼 디렉팅', en:'AI image generation, visual direction'}
+},
   {
     id:'w20', cat:'uiux',
     kr:{ t:'HMI UI/UX 디자인 표준 가이드', s:'전 장비 공통 표준', desc:'향후 개발되는 모든 장비에 일관되게 적용될 HMI UI/UX 디자인 표준과 컴포넌트 가이드를 수립하여, 신규 장비 개발 시 UI 설계 기간을 단축하고 제품 전반의 사용자 경험 일관성을 확보했습니다.' },
@@ -1374,33 +1380,33 @@ const WORKS = [
   },
   {
     id:'w19', cat:'brand',
-    kr:{ t:'', s:'E2S 브랜드 로고 씰 도장', desc:'흰색 고급 지류에 E2S CO., LTD. 로고를 Embossing 가공으로 표현한 브랜드 아이덴티티 디테일 컷입니다. 고유의 질감과 부드러운 빛의 대조를 활용하여 입체감 있는 브랜드 이미지를 시각화했습니다.' },
+    kr:{ t:'CI 로고 시스템 가이드', s:'로고 사용 기준 정립', desc:'로고의 최소 여백, 색상 규정, 금지 사항 등 기본적인 사용 기준을 정리하여 누구나 일관되게 로고를 적용할 수 있는 가이드를 제작했습니다.' },
+    en:{ t:'CI Logo System Guide', s:'Logo Usage Standards', desc:'Established basic usage standards — including clear space, color rules, and misuse guidelines — so the logo can be applied consistently by anyone.' },
+    year:'2026', img:'images/w19.jpg', role:{kr:'가이드 정립', en:'Branding'}
+  },
+{
+  id:'w18', cat:'doc',
+  kr:{ t:'1 Page 회사소개 인포그래픽', s:'16p 분량 압축 · 정보 재구조화', desc:'16페이지 분량의 회사소개서 핵심 정보를 한 장의 인포그래픽으로 압축했습니다. 사업 영역, 인증·특허, 해외 법인 현황 등 방대한 정보를 정보 위계에 따라 재구성하여, 짧은 시간 안에도 회사의 핵심 경쟁력이 한눈에 전달되도록 디자인했습니다.' },
+  en:{ t:'One-Page Corporate Profile Infographic', s:'Condensed from a 16-Page Deck', desc:'Compressed the core content of a 16-page corporate profile into a single-page infographic, reorganizing business areas, certifications, and overseas operations into a clear visual hierarchy for at-a-glance impact.' },
+  year:'2026', img:'images/w18.jpg', role:{kr:'정보 구조화, 인포그래픽 디자인', en:'Information architecture, infographic design'}
+},
+{
+  id:'w17', cat:'product',
+  kr:{ t:'제품 사진 보정 및 이미지 개선', s:'촬영 이미지 리터칭', desc:'원본 촬영본의 구도를 다시 잡고 색감과 비율을 보정하여, 제품의 디테일과 질감이 살아있는 카탈로그·홍보용 제품 이미지로 재작업했습니다.' },
+  en:{ t:'Product Photo Retouching', s:'Image Enhancement from Raw Shots', desc:'Re-composed and color-corrected raw product photography, adjusting framing and proportions to produce catalog-ready product images that highlight material detail and texture.' },
+  year:'2026', img:'images/w17.jpg', role:{kr:'사진 보정, 이미지 리터칭', en:'Photo retouching, image editing'}
+},
+{
+  id:'w16', cat:'brand',
+  kr:{ t:'송년회 포스터 디자인', s:'사내 행사 포스터', desc:'한 해를 마무리하는 행사의 분위기와 메시지를 브랜드 톤에 맞춰 시각화하고, 일시·장소 등 핵심 정보를 한눈에 전달하는 포스터를 디자인했습니다.' },
+  en:{ t:'Year-End Party Poster', s:'Corporate Event Poster', desc:'Designed a poster that visualizes the mood and message of the year-end celebration in line with the brand\'s tone, clearly conveying key details like date and venue at a glance.' },
+  year:'2025', img:'images/w16.jpg', role:{kr:'그래픽, 포스터 디자인', en:'Graphic, poster design'}
+},
+  {
+    id:'w15', cat:'brand',
+    kr:{ t:'E2S 브랜드 로고 씰 도장', s:'해외 문서 시스템 공통', desc:'흰색 고급 지류에 E2S CO., LTD. 로고를 Embossing 가공으로 표현한 브랜드 아이덴티티 디테일 컷입니다. 고유의 질감과 부드러운 빛의 대조를 활용하여 입체감 있는 브랜드 이미지를 시각화했습니다.' },
     en:{ t:'Embossed Logo Mockup for E2S CO., LTD.', s:'Document Formatting', desc:'A detailed view of the E2S visual identity, presented via custom embossing on textured, high-quality white paper. This process utilizes light and shadow to create a sophisticated, tactile dimension that elevates the corporate brand image.' },
-    year:'2026', img:'images/w19.png', role:{kr:'문서 도장, seal', en:'Seal design'}
-  },
-  {
-    id:'w18', cat:'uiux',
-    kr:{ t:'PMS 전사 확장 UI/UX 표준화', s:'전 프로젝트 공통 적용', desc:'단일 프로젝트에 머물던 PMS UI/UX를 향후 모든 프로젝트에 공통으로 적용 가능한 구조로 확장 설계하여, 신규 프로젝트 착수 시 별도의 UI 설계 없이 바로 적용할 수 있는 시스템을 완성했습니다.' },
-    en:{ t:'PMS UI/UX Expansion Standard', s:'Applied Across All Projects', desc:'Expanded the PMS UI/UX from a single-project tool into a reusable structure applied across all future projects, enabling instant deployment without additional UI design work.' },
-    year:'2026', img:'images/w18.jpg', role:{kr:'시스템 구조 설계, UI/UX', en:'System architecture, UI/UX'}
-  },
-  {
-    id:'w17', cat:'uiux',
-    kr:{ t:'BOM UI/UX 디자인', s:'자재명세서 시스템', desc:'복잡한 자재명세서(BOM) 데이터를 엔지니어와 구매 담당자 모두가 직관적으로 파악할 수 있도록 정보 구조를 재설계하고 UI/UX를 디자인했습니다.' },
-    en:{ t:'BOM UI/UX Design', s:'Bill of Materials System', desc:'Redesigned the information architecture and UI/UX of complex Bill of Materials (BOM) data so both engineers and purchasers can read and manage it intuitively.' },
-    year:'2026', img:'images/w17.jpg', role:{kr:'정보구조 설계, UI/UX', en:'Information architecture, UI/UX'}
-  },
-  {
-    id:'w16', cat:'web',
-    kr:{ t:'사내 교육 사이트 UI/UX 디자인', s:'교육 플랫폼', desc:'임직원 대상 온라인 교육 콘텐츠를 체계적으로 학습할 수 있도록 커리큘럼 구조와 UI/UX를 설계하여, 학습 몰입도와 완주율을 높이는 교육 플랫폼을 구축했습니다.' },
-    en:{ t:'Corporate Training Site UI/UX', s:'Learning Platform', desc:'Designed the curriculum structure and UI/UX of an internal training platform, improving learner engagement and course completion through a clear, guided learning experience.' },
-    year:'2026', img:'images/w16.jpg', role:{kr:'UI/UX 설계, 정보구조', en:'UI/UX design, information architecture'}
-  },
-  {
-    id:'w15', cat:'product',
-    kr:{ t:'제품 외관 디자인', s:'하드웨어 프로덕트 디자인', desc:'전력/제어 장비의 외관 폼팩터와 마감 디테일을 재설계하여, 기술적 완성도뿐 아니라 현장에서의 시각적 신뢰감까지 갖춘 제품 디자인을 완성했습니다.' },
-    en:{ t:'Product Exterior Design', s:'Hardware Product Design', desc:'Redesigned the exterior form factor and finish details of power/control equipment, delivering a product design that conveys both technical precision and visual trust on-site.' },
-    year:'2026', img:'images/w15.jpg', role:{kr:'제품 디자인, 폼팩터', en:'Product design, form factor'}
+    year:'2026', img:'images/w15.png', role:{kr:'문서 도장, seal', en:'Seal design'}
   },
   { 
     id:'w14', cat:'uiux', 
