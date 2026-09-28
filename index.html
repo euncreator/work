@@ -35,6 +35,7 @@
     --subhead-h: 72px;
     --content-max: 1520px;
     --side-pad: 40px;
+    --accent: #ff6b5b;
   }
   html[data-theme="light"]{
     --bg: #ffffff;
@@ -53,6 +54,7 @@
     --overlay: rgba(255,255,255,.78);
     --skel-a: #ececee;
     --skel-b: #e0e0e3;
+    --accent: #e8543f;
   }
 
   *{ box-sizing: border-box; }
@@ -452,7 +454,7 @@
   .roi-donut-wrap{ position: relative; width: 92px; height: 92px; margin: 0 auto 12px; }
   .roi-donut-wrap svg{ width: 100%; height: 100%; }
   .roi-donut-bg{ fill: none; stroke: var(--line); stroke-width: 10; }
-  .roi-donut-fg{ fill: none; stroke: #5282ff; stroke-width: 10; stroke-linecap: round; }
+  .roi-donut-fg{ fill: none; stroke: var(--accent); stroke-width: 10; stroke-linecap: round; }
   .roi-donut-center{
     position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
     font-size: 17px; font-weight: 800; color: var(--fg); font-variant-numeric: tabular-nums;
@@ -470,7 +472,7 @@
     padding: 18px 20px;
   }
   .roi-asset-card h4{ font-size: 13.5px; font-weight: 700; margin: 0 0 8px; color: var(--fg); }
-  .roi-asset-card .amt{ font-size: 21px; font-weight: 800; color: #5282ff; margin: 0 0 6px; font-variant-numeric: tabular-nums; }
+  .roi-asset-card .amt{ font-size: 21px; font-weight: 800; color: var(--accent); margin: 0 0 6px; font-variant-numeric: tabular-nums; }
   .roi-asset-card p{ font-size: 12px; color: var(--fg-mute); margin: 0; line-height: 1.5; }
 
   .roi-stats{
@@ -484,7 +486,7 @@
   .roi-stat .num{ font-size: 27px; font-weight: 800; color: var(--fg); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
   .roi-stat .label{ font-size: 12px; color: var(--fg-mute); margin-top: 6px; }
   .roi-stat.total{ border-color: var(--line-strong); background: var(--bg-elev-2); }
-  .roi-stat.total .num{ color: #5282ff; }
+  .roi-stat.total .num{ color: var(--accent); }
 
   .roi-headline{
     font-size: clamp(15px, 1.9vw, 17px); font-weight: 700; line-height: 1.7; color: var(--fg);
@@ -510,7 +512,7 @@
     border-right: 1px solid var(--line); line-height: 1.6;
   }
   .history-date .duration{
-    font-size: 12px; color: #5282ff; font-weight: 600; margin-top: 4px; display: block;
+    font-size: 12px; color: var(--accent); font-weight: 600; margin-top: 4px; display: block;
   }
   
   .history-content{ padding: 24px; }
