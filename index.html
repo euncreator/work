@@ -427,6 +427,71 @@
     border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px;
   }
 
+  /* ============ ROI / COST SAVINGS INFOGRAPHIC ============ */
+  .roi-title{
+    font-size: 19px; font-weight: 800; letter-spacing: -0.01em; color: var(--fg);
+    margin: 56px 0 14px;
+  }
+  .roi-intro{
+    font-size: 14px; color: var(--fg-mute); line-height: 1.7; max-width: 900px; margin: 0 0 24px;
+  }
+  .roi-subhead{
+    font-size: 12px; font-weight: 700; color: var(--fg-dim); text-transform: uppercase;
+    letter-spacing: 0.08em; margin: 8px 0 14px;
+  }
+  .roi-donuts{
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 32px;
+  }
+  @media (max-width: 1100px){ .roi-donuts{ grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 620px){ .roi-donuts{ grid-template-columns: repeat(2, 1fr); } }
+  .roi-donut-card{
+    background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius-md);
+    padding: 20px 14px 18px; text-align: center; transition: border-color .2s, transform .2s;
+  }
+  .roi-donut-card:hover{ border-color: var(--line-strong); transform: translateY(-2px); }
+  .roi-donut-wrap{ position: relative; width: 92px; height: 92px; margin: 0 auto 12px; }
+  .roi-donut-wrap svg{ width: 100%; height: 100%; }
+  .roi-donut-bg{ fill: none; stroke: var(--line); stroke-width: 10; }
+  .roi-donut-fg{ fill: none; stroke: #5282ff; stroke-width: 10; stroke-linecap: round; }
+  .roi-donut-center{
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: 800; color: var(--fg); font-variant-numeric: tabular-nums;
+  }
+  .roi-donut-label{ font-size: 13px; font-weight: 700; color: var(--fg); line-height: 1.35; margin-bottom: 6px; }
+  .roi-donut-detail{ font-size: 11px; color: var(--fg-mute); line-height: 1.55; }
+  .roi-donut-detail b{ color: var(--fg); font-weight: 700; }
+
+  .roi-assets{
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 32px;
+  }
+  @media (max-width: 700px){ .roi-assets{ grid-template-columns: 1fr; } }
+  .roi-asset-card{
+    background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius-md);
+    padding: 18px 20px;
+  }
+  .roi-asset-card h4{ font-size: 13.5px; font-weight: 700; margin: 0 0 8px; color: var(--fg); }
+  .roi-asset-card .amt{ font-size: 21px; font-weight: 800; color: #5282ff; margin: 0 0 6px; font-variant-numeric: tabular-nums; }
+  .roi-asset-card p{ font-size: 12px; color: var(--fg-mute); margin: 0; line-height: 1.5; }
+
+  .roi-stats{
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 28px;
+  }
+  @media (max-width: 900px){ .roi-stats{ grid-template-columns: 1fr; } }
+  .roi-stat{
+    background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius-md);
+    padding: 22px 18px; text-align: center;
+  }
+  .roi-stat .num{ font-size: 27px; font-weight: 800; color: var(--fg); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+  .roi-stat .label{ font-size: 12px; color: var(--fg-mute); margin-top: 6px; }
+  .roi-stat.total{ border-color: var(--line-strong); background: var(--bg-elev-2); }
+  .roi-stat.total .num{ color: #5282ff; }
+
+  .roi-headline{
+    font-size: clamp(15px, 1.9vw, 17px); font-weight: 700; line-height: 1.7; color: var(--fg);
+    background: var(--bg-elev-2); border: 1px solid var(--line-strong); border-radius: var(--radius-md);
+    padding: 22px 26px;
+  }
+
   /* ============ HISTORY TABLE STYLE ============ */
   .history-list{
     border: 1px solid var(--line); border-radius: var(--radius-md);
@@ -997,6 +1062,131 @@
     <span class="en-only block">I understand business goals clearly and visualize everything from planning and UI/UX design to branding and system implementation into one seamless experience.</span>
   </p>
   <div class="cap-grid" id="capGrid"></div>
+
+  <div class="roi-section">
+    <h3 class="roi-title">
+      <span class="kr-only">주요 외주비 절감 및 자산 확보 성과</span>
+      <span class="en-only">Outsourcing Cost Savings &amp; Asset Acquisition</span>
+    </h3>
+    <p class="roi-intro">
+      <span class="kr-only block">기획·디자인·개발을 직접 수행하고 외주 단가를 재협상하여 주요 프로젝트의 외주비를 실질적으로 절감했습니다. 아래는 항목별 절감률을 도넛 차트로 정리한 것입니다.</span>
+      <span class="en-only block">By handling planning, design, and development in-house and renegotiating vendor rates, outsourcing costs were substantially reduced across key projects. The donut charts below show the reduction rate for each item.</span>
+    </p>
+
+    <div class="roi-donuts">
+      <div class="roi-donut-card">
+        <div class="roi-donut-wrap">
+          <svg viewBox="0 0 100 100">
+            <circle class="roi-donut-bg" cx="50" cy="50" r="42"></circle>
+            <circle class="roi-donut-fg" cx="50" cy="50" r="42" stroke-dasharray="131.9 263.9" transform="rotate(-90 50 50)"></circle>
+          </svg>
+          <div class="roi-donut-center">50%</div>
+        </div>
+        <div class="roi-donut-label"><span class="kr-only">홈페이지 구축</span><span class="en-only">Website Development</span></div>
+        <div class="roi-donut-detail">
+          <span class="kr-only">₩1,600만 → ₩800만<br><b>800만 원 절감</b></span>
+          <span class="en-only">₩16M → ₩8M<br><b>Saved ₩8M</b></span>
+        </div>
+      </div>
+
+      <div class="roi-donut-card">
+        <div class="roi-donut-wrap">
+          <svg viewBox="0 0 100 100">
+            <circle class="roi-donut-bg" cx="50" cy="50" r="42"></circle>
+            <circle class="roi-donut-fg" cx="50" cy="50" r="42" stroke-dasharray="72.0 263.9" transform="rotate(-90 50 50)"></circle>
+          </svg>
+          <div class="roi-donut-center">27%</div>
+        </div>
+        <div class="roi-donut-label"><span class="kr-only">영상 편집</span><span class="en-only">Video Editing</span></div>
+        <div class="roi-donut-detail">
+          <span class="kr-only">₩2,200만 → ₩1,600만<br><b>600만 원 절감</b></span>
+          <span class="en-only">₩22M → ₩16M<br><b>Saved ₩6M</b></span>
+        </div>
+      </div>
+
+      <div class="roi-donut-card">
+        <div class="roi-donut-wrap">
+          <svg viewBox="0 0 100 100">
+            <circle class="roi-donut-bg" cx="50" cy="50" r="42"></circle>
+            <circle class="roi-donut-fg" cx="50" cy="50" r="42" stroke-dasharray="211.1 263.9" transform="rotate(-90 50 50)"></circle>
+          </svg>
+          <div class="roi-donut-center">80%</div>
+        </div>
+        <div class="roi-donut-label"><span class="kr-only">카달로그 제작</span><span class="en-only">Catalog Production</span></div>
+        <div class="roi-donut-detail">
+          <span class="kr-only">₩150만 → ₩30만<br><b>120만 원 절감</b></span>
+          <span class="en-only">₩1.5M → ₩0.3M<br><b>Saved ₩1.2M</b></span>
+        </div>
+      </div>
+
+      <div class="roi-donut-card">
+        <div class="roi-donut-wrap">
+          <svg viewBox="0 0 100 100">
+            <circle class="roi-donut-bg" cx="50" cy="50" r="42"></circle>
+            <circle class="roi-donut-fg" cx="50" cy="50" r="42" stroke-dasharray="175.9 263.9" transform="rotate(-90 50 50)"></circle>
+          </svg>
+          <div class="roi-donut-center">67%</div>
+        </div>
+        <div class="roi-donut-label"><span class="kr-only">현수막 제작</span><span class="en-only">Banner Production</span></div>
+        <div class="roi-donut-detail">
+          <span class="kr-only">₩9만 → ₩3만<br><b>6만 원 절감</b></span>
+          <span class="en-only">₩90K → ₩30K<br><b>Saved ₩60K</b></span>
+        </div>
+      </div>
+
+      <div class="roi-donut-card">
+        <div class="roi-donut-wrap">
+          <svg viewBox="0 0 100 100">
+            <circle class="roi-donut-bg" cx="50" cy="50" r="42"></circle>
+            <circle class="roi-donut-fg" cx="50" cy="50" r="42" stroke-dasharray="170.7 263.9" transform="rotate(-90 50 50)"></circle>
+          </svg>
+          <div class="roi-donut-center">65%</div>
+        </div>
+        <div class="roi-donut-label"><span class="kr-only">명함 제작 (개당)</span><span class="en-only">Business Cards (Unit)</span></div>
+        <div class="roi-donut-detail">
+          <span class="kr-only">개당 17,000원 → 6,000원<br><b>64.7% 절감</b></span>
+          <span class="en-only">₩17K → ₩6K per unit<br><b>64.7% reduction</b></span>
+        </div>
+      </div>
+    </div>
+
+    <p class="roi-subhead">
+      <span class="kr-only">지원사업 연계 현물 자산 확보 (총 900만 원 유치)</span>
+      <span class="en-only">Grant-Linked In-Kind Assets Secured (Total ₩9M)</span>
+    </p>
+    <div class="roi-assets">
+      <div class="roi-asset-card">
+        <h4><span class="kr-only">영상 절감 예산 연계</span><span class="en-only">Linked to Video Savings Budget</span></h4>
+        <div class="amt">₩4,000,000</div>
+        <p><span class="kr-only">상당 다이어리 확보</span><span class="en-only">worth of diaries secured</span></p>
+      </div>
+      <div class="roi-asset-card">
+        <h4><span class="kr-only">홈페이지 절감 예산 연계</span><span class="en-only">Linked to Website Savings Budget</span></h4>
+        <div class="amt">₩5,000,000</div>
+        <p><span class="kr-only">상당 물건/장비 확보</span><span class="en-only">worth of goods/equipment secured</span></p>
+      </div>
+    </div>
+
+    <div class="roi-stats">
+      <div class="roi-stat">
+        <div class="num">₩1,526만+</div>
+        <div class="label"><span class="kr-only">주요 외주 프로젝트 비용 절감</span><span class="en-only">Outsourcing Cost Savings</span></div>
+      </div>
+      <div class="roi-stat">
+        <div class="num">₩900만</div>
+        <div class="label"><span class="kr-only">지원사업 연계 자산 확보</span><span class="en-only">Grant-Linked Assets Secured</span></div>
+      </div>
+      <div class="roi-stat total">
+        <div class="num">₩2,426만+</div>
+        <div class="label"><span class="kr-only">총 재무 기여 규모</span><span class="en-only">Total Financial Contribution</span></div>
+      </div>
+    </div>
+
+    <div class="roi-headline">
+      <span class="kr-only block">"직접 기획·개발 내재화 및 단가 재협상을 통해 외주비 1,526만 원 절감 + 지원사업 연계 900만 원 자산 확보 (총 2,426만 원 상당 재무 기여)"</span>
+      <span class="en-only block">"By internalizing planning/development and renegotiating unit costs, reduced outsourcing costs by ₩15.26M and secured ₩9M in grant-linked assets — a total financial contribution of over ₩24.26M."</span>
+    </div>
+  </div>
 </section>
 
 <section class="section" id="experience">
